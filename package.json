@@ -1,0 +1,66 @@
+{
+  "name": "queues.js",
+  "version": "0.0.1",
+  "description": "npm module for start ended life/ fifo, normal js ended lifo/ fifo, double eneded queue and semaphore queue implementation",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshkbhat/queues.js.git"
+  },
+  "keywords": [
+    "scale",
+    "concurrency",
+    "threads",
+    "processes",
+    "rxjs",
+    "queues",
+    "nodejs",
+    "queue",
+    "queues",
+    "start",
+    "ended",
+    "queue",
+    "start",
+    "ended",
+    "lifo",
+    "start",
+    "ended",
+    "fifo",
+    "end",
+    "ended",
+    "lifo",
+    "end",
+    "ended",
+    "fifo",
+    "double",
+    "endded",
+    "queue",
+    "semaphore",
+    "queue"
+  ],
+  "author": "Ganesh Bhat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ganeshkbhat/queues.js/issues"
+  },
+  "homepage": "https://github.com/ganeshkbhat/queues.js#readme",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
+    "npm-check": "^6.0.1",
+    "nsp": "^3.2.1",
+    "nsp-api": "^1.0.3",
+    "sinon": "^14.0.2",
+    "unimported": "^1.23.0"
+  }
+}
