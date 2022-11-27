@@ -30,21 +30,21 @@ queue.endLifo.(___)
 
 
 
-// - start ended lifo
+// - start ended fifo
 //   ==>   [1,2,3,4]  ==>
 
-queue.startLifo.(___)
+queue.startFifo.(___)
 
 // endFifo functions: 
 // .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
 
 
 
-// - start ended fifo
+// - start ended lifo
 //   ==> [1,2,3,4]
 //   <==
 
-queue.startFifo.(___)
+queue.startLifo.(___)
 
 // endFifo functions: 
 // .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
