@@ -100,6 +100,8 @@ function QueueLowFootprint() {
     return item;
   }
 
+  this.shift = this.dequeue;
+
   this.pop = function pop() {
     return this.items.pop();
   }
@@ -124,11 +126,11 @@ function QueueLowFootprint() {
     push: (item) => this.insert(item, this.items.length),
     insertAtIndex: this.insert,
 
+    shift: this.dequeue,
     remove: this.dequeue,
     removeAtIndex: this.remove,
     removeItem: this.removeItem,
-    pop: this.pop,
-
+    
     size: this.size,
     peek: () => this.peek(0),
     seek: (index) => this.items[index],
@@ -146,11 +148,11 @@ function QueueLowFootprint() {
     insert: this.enqueue,
     insertAtIndex: this.insert,
 
+    pop: this.pop,
     remove: this.pop,
     removeAtIndex: this.remove,
     removeItem: this.removeItem,
-    pop: this.pop,
-
+    
     size: this.size,
     peek: () => this.peek(this.items.length - 1),
     seek: (index) => this.items[index],
@@ -187,7 +189,7 @@ function QueueLowFootprint() {
     insertAtIndex: this.insert,
 
     remove: this.dequeue,
-    pop: this.dequeue,
+    shift: this.dequeue,
 
     removeAtIndex: this.remove,
     removeItem: this.removeItem,
