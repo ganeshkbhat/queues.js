@@ -1,5 +1,5 @@
 # queues.js
-npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double eneded queue and semaphore queue implementation
+npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation
 
 
 ## INDEVELOPMENT - DO NOT INSTALL
