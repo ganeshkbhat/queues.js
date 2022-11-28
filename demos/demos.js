@@ -15,10 +15,17 @@
 
 'use strict';
 
-// const { Queue, QueueLowFootprint, AsyncQueue, Semaphore } = require("../index");
-// console.log(Queue, QueueLowFootprint, AsyncQueue, Semaphore);
 
+const {
+    Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
+    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
+    Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
+    DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
+    Semaphore
+} = require("../index.js");
 
-const { Queue, QueueLowFootprint, Semaphore } = require("../index");
-console.log(Queue, QueueLowFootprint, Semaphore);
-
+console.log(Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
+    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
+    Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
+    DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
+    Semaphore)

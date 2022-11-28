@@ -1,74 +1,51 @@
 # queues.js
+
 npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation
 
 
 ## INDEVELOPMENT - DO NOT INSTALL
 
+
+### Base
+
 ```
 
-const queue = require("queues.js").QueueLowFootprint()
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("queues.js");
+
+```
+
+### Queue (includes all Base methods)
+
+```
+
+const { Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint } = require("queues.js");
 
 
-// - normal js ended fifo
-//   <==   [1,2,3,4]  <==
+```
 
-queue.endFifo.(___) 
+### Stack (includes all Base methods)
 
-// endFifo functions: 
-// .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
+```
 
-
-
-// - normal js ended lifo
-//   [1,2,3,4]  <==
-//              ==>
-
-queue.endLifo.(___) 
-
-// endFifo functions: 
-// .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
+const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require("queues.js");
 
 
+```
 
-// - start ended fifo
-//   ==>   [1,2,3,4]  ==>
+### Double (includes all Base methods)
 
-queue.startFifo.(___)
+```
 
-// endFifo functions: 
-// .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
-
+const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint } = require("queues.js");
 
 
-// - start ended lifo
-//   ==> [1,2,3,4]
-//   <==
+```
 
-queue.startLifo.(___)
+### Semaphore (includes all Base methods)
 
-// endFifo functions: 
-// .enqueue, .dequeue, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
+```
 
-
-
-// Double Ended Queue (LIFO, FIFO, normal js ended LIFO, normal js FIFO)
-//
-//   ==>   [1,2,3,4]  ==>
-// 
-//   <==   [1,2,3,4]  <==
-//
-//   <==   [1,2,3,4]
-//   ==>
-// 
-//   [1,2,3,4] <==
-//             ==>
-//
-//
-//  <== | ==> [1,2,3,4] <== | ==>
-// 
-queue.doubleEnded.(___)
-// doubleEnded functions: 
-// .start.add, .start.remove, .end.add, .end.remove, .insertAtIndex, .removeAtIndex, .removeItem, .size, .peek, .seek, .clear
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("queues.js");
 
 
 ```

@@ -15,7 +15,7 @@
 
 'use strict';
 
-const { Queue } = require("./queue");
+const { Queue } = require("./base.js");
 
 function Semaphore(initialValue) {
   this.count;
@@ -60,3 +60,5 @@ function Semaphore(initialValue) {
 }
 
 module.exports.Semaphore = Semaphore;
+module.exports.default = { Semaphore };
+

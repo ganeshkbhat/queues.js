@@ -6,7 +6,7 @@
  * Install: npm i queues.js --save
  * Github: https://github.com/ganeshkbhat/queues.js
  * npmjs Link: https://www.npmjs.com/package/queues.js
- * File: semaphore.js
+ * File: base.js
  * File Description: .js 
  * 
 */
