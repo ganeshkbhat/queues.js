@@ -65,7 +65,6 @@ function Circular(queueSize = 10) {
 Circular.prototype = Object.create(Base.prototype);
 Circular.prototype.constructor = Circular;
 
-
 /**
  *
  *

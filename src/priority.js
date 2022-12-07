@@ -24,7 +24,7 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  *
  *
  */
- function Priority() {
+function Priority() {
 
     Base.call(this);
 
@@ -149,7 +149,6 @@ function AsyncPriorityLowFootprint() {
 
 AsyncPriorityLowFootprint.prototype = Object.create(AsyncBaseLowFootPrint.prototype);
 AsyncPriorityLowFootprint.prototype.constructor = AsyncPriorityLowFootprint;
-
 
 module.exports.Priority = Priority;
 module.exports.PriorityLowFootprint = PriorityLowFootprint;

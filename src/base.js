@@ -21,7 +21,14 @@
  *
  *
  */
-function Base() {
+function Base(type = "end") {
+
+    /**
+     * end - bottomended
+     * front - frontended
+     * de - doubleended
+     */
+    this.type = type;
 
     // 
     // Use cases - Front and End Queue:
@@ -125,13 +132,33 @@ function Base() {
     this.deleteFront = this.shift;
     this.deleteLast = this.pop;
 
+    this.enqueue = function enqueue(item) { }
+    // dequeueOrWait
+    this.dequeue = function dequeue() { }
+
+    this.clear = function clear() {
+        this.items = [];
+    }
+
+    this.isEmpty = function isEmpty() {
+        return this.size() === 0;
+    }
+
     this.peek = function peek() {
         if (this.items.length === 0) return undefined;
         return this.items[this.offset];
     }
 
+    this.getFront = () => this.peek();
+    this.getRear = () => this.peek((this.items.length - 1));
+
     this.size = function size() {
         return this.items.length - this.offset;
+    }
+
+    this.toArray = function toArray() {
+        // return this.items.slice(0, (this.items.length - 1));
+        return [...this.items];
     }
 }
 
@@ -139,7 +166,14 @@ function Base() {
  *
  *
  */
-function BaseLowFootprint() {
+function BaseLowFootprint(type = "end") {
+
+    /**
+     * end - bottomended
+     * front - frontended
+     * de - doubleended
+     */
+    this.type = type;
 
     this.items = [];
 
@@ -187,6 +221,11 @@ function BaseLowFootprint() {
     this.deleteFront = this.shift;
     this.deleteLast = this.pop;
 
+
+    this.enqueue = function enqueue(item) { }
+    // dequeueOrWait
+    this.dequeue = function dequeue() { }
+
     this.isEmpty = function isEmpty() {
         return this.size() === 0;
     }
@@ -201,7 +240,6 @@ function BaseLowFootprint() {
     }
 
     this.getFront = () => this.peek();
-
     this.getRear = () => this.peek((this.items.length - 1));
 
     this.size = function size() {
@@ -209,7 +247,8 @@ function BaseLowFootprint() {
     }
 
     this.toArray = function toArray() {
-        return this.items.slice(0, (this.items.length - 1));
+        // return this.items.slice(0, (this.items.length - 1));
+        return [...this.items]
     }
 
 }
@@ -218,7 +257,14 @@ function BaseLowFootprint() {
  *
  *
  */
-function AsyncBase() {
+function AsyncBase(type = "end") {
+
+    /**
+     * end - bottomended
+     * front - frontended
+     * de - doubleended
+     */
+    this.type = type;
 
     Base.call(this);
     this.superClass = this;
@@ -226,7 +272,8 @@ function AsyncBase() {
     this.awaiters = new Base();
 
     this.enqueue = function enqueue(item) { }
-    this.dequeueOrWait = function dequeueOrWait() { }
+    // dequeueOrWait
+    this.dequeue = function dequeue() { }
 
 }
 
@@ -237,7 +284,14 @@ AsyncBase.prototype.constructor = AsyncBase;
  *
  *
  */
-function AsyncBaseLowFootPrint() {
+function AsyncBaseLowFootPrint(type = "end") {
+
+    /**
+     * end - bottomended
+     * front - frontended
+     * de - doubleended
+     */
+    this.type = type;
 
     BaseLowFootprint.call(this);
     this.superClass = this;
@@ -245,19 +299,18 @@ function AsyncBaseLowFootPrint() {
     this.awaiters = new BaseLowFootprint();
 
     this.enqueue = function enqueue(item) { }
-    this.dequeueOrWait = function dequeueOrWait() { }
+    // dequeueOrWait
+    this.dequeue = function dequeue() { }
 
 }
 
 AsyncBaseLowFootPrint.prototype = Object.create(BaseLowFootprint.prototype);
 AsyncBaseLowFootPrint.prototype.constructor = AsyncBaseLowFootPrint;
 
-
 module.exports.Base = Base;
 module.exports.BaseLowFootprint = BaseLowFootprint;
 module.exports.AsyncBase = AsyncBase;
 module.exports.AsyncBaseLowFootPrint = AsyncBaseLowFootPrint;
-
 
 module.exports.default = {
     Base, BaseLowFootprint,
