@@ -30,7 +30,7 @@ const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require
 
 ```
 
-### Double (includes all Base methods)
+### Double - Denqueue (includes all Base methods)
 
 ```
 
