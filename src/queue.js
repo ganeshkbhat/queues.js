@@ -15,19 +15,19 @@
 
 'use strict';
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base");
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+/**
+ *
+ *
+ */
 function Queue() {
+
     Base.call(this);
-}
 
-function QueueLowFootprint() {
-    BaseLowFootprint.call(this);
-
-    // this.enqueue = function enqueue(item) { }
-    // this.dequeue = function dequeue() { }
-
+    // 
     //   <==   [1,2,3,4]  <==
+    // 
     this.fifo = {
         enqueue: this.push,
         dequeue: this.shift,
@@ -40,8 +40,10 @@ function QueueLowFootprint() {
         remove: this.shift
     };
 
+    // 
     //   [1,2,3,4]  <==
     //              ==>
+    // 
     this.lifo = {
         enqueue: this.push,
         dequeue: this.pop,
@@ -56,13 +58,65 @@ function QueueLowFootprint() {
 
 }
 
+/**
+ *
+ *
+ */
+function QueueLowFootprint() {
+    BaseLowFootprint.call(this);
+
+    // this.enqueue = function enqueue(item) { }
+    // this.dequeue = function dequeue() { }
+
+    //
+    //   <==   [1,2,3,4]  <==
+    // 
+    this.fifo = {
+        enqueue: this.push,
+        dequeue: this.shift,
+
+        add: this.push,
+        insert: this.push,
+        push: this.push,
+
+        shift: this.shift,
+        remove: this.shift
+    };
+
+    // 
+    //   [1,2,3,4]  <==
+    //              ==>
+    //
+    this.lifo = {
+        enqueue: this.push,
+        dequeue: this.pop,
+
+        add: this.push,
+        push: this.push,
+        insert: this.push,
+
+        pop: this.pop,
+        remove: this.pop
+    }
+
+}
+
+/**
+ *
+ *
+ */
 function AsyncQueue() {
     AsyncBase.call(this);
 }
 
+/**
+ *
+ *
+ */
 function AsyncQueueLowFootprint() {
     AsyncBaseLowFootPrint.call(this);
 }
+
 
 Queue.prototype = Object.create(Base.prototype);
 Queue.prototype.constructor = Queue;

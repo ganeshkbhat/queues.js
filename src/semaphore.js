@@ -15,7 +15,7 @@
 
 'use strict';
 
-const { Queue } = require("./base.js");
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
 function Semaphore(initialValue) {
   this.count;

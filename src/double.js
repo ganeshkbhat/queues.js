@@ -15,14 +15,37 @@
 
 'use strict';
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base");
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+/**
+ *
+ *
+ */
 function DoubleEnded() {
     Base.call(this);
+
+    this.superBase = this;
+
+    this.double = {
+        insertFront: this.insertFront,
+        insertLast: this.insertLast,
+        deleteFront: this.deleteFront,
+        deleteLast: this.deleteLast,
+        getFront: this.peek,
+        getRear: this.getRear,
+        isEmpty: this.isEmpty
+    }
 }
 
+/**
+ *
+ *
+ */
 function DoubleEndedLowFootprint() {
+    
     BaseLowFootprint.call(this);
+
+    this.superBase = this;
 
     // Double Ended Queue
     //
@@ -47,12 +70,24 @@ function DoubleEndedLowFootprint() {
     }
 }
 
+/**
+ *
+ *
+ */
 function AsyncDoubleEnded() {
     AsyncBase.call(this);
+
+    this.superBase = this;
 }
 
+/**
+ *
+ *
+ */
 function AsyncDoubleEndedLowFootprint() {
     AsyncBaseLowFootPrint.call(this);
+
+    this.superBase = this;
 }
 
 DoubleEnded.prototype = Object.create(Base.prototype);

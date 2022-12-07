@@ -1,12 +1,12 @@
 /**
  * 
- * Package: queues.js
+ * Package: scale.concurrency
  * Author: Ganesh B
- * Description: npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation
- * Install: npm i queues.js --save
- * Github: https://github.com/ganeshkbhat/queues.js
- * npmjs Link: https://www.npmjs.com/package/queues.js
- * File: queue.js
+ * Description: 
+ * Install: npm i scale.concurrency --save
+ * Github: https://github.com/ganeshkbhat/scale.concurrency
+ * npmjs Link: https://www.npmjs.com/package/scale.concurrency
+ * File: .js
  * File Description: .js 
  * 
 */

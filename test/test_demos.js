@@ -6,8 +6,8 @@
  * Install: npm i queues.js --save
  * Github: https://github.com/ganeshkbhat/queues.js
  * npmjs Link: https://www.npmjs.com/package/queues.js
- * File: index.js
- * File Description: queues.js 
+ * File: .js
+ * File Description: .js 
  * 
 */
 
@@ -15,24 +15,17 @@
 
 'use strict';
 
-import { default as queues } from "./index.js";
 
-import {
+const {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
-    Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore
-} from "./index.js";
+    Semaphore
+} = require("../index.js");
 
-export default queues;
-
-export {
-    Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
+console.log(Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
-    Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore
-};
+    Semaphore)

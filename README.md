@@ -2,9 +2,7 @@
 
 npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation
 
-
 ## INDEVELOPMENT - DO NOT INSTALL
-
 
 ### Base
 
@@ -49,3 +47,4 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("qu
 
 
 ```
+

@@ -15,14 +15,20 @@
 
 'use strict';
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base");
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
 function Stack() {
+    
     Base.call(this);
+
+    this.superBase = this;
 }
 
 function StackLowFootprint() {
+
     BaseLowFootprint.call(this);
+
+    this.superBase = this;
 
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {
@@ -47,11 +53,17 @@ function StackLowFootprint() {
 }
 
 function AsyncStack() {
+
     AsyncBase.call(this);
+
+    this.superBase = this;
 }
 
 function AsyncStackLowFootprint() {
+
     AsyncBaseLowFootPrint.call(this);
+
+    this.superBase = this;
 }
 
 Stack.prototype = Object.create(Base.prototype);

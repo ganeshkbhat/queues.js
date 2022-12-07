@@ -1,4 +1,51 @@
-[TODO] 
-    
-    - Add Event Handlers for queues - BeforeEvent, Event, ErrorEvent, AfterEvent
+[TODO]
 
+- [D] Base Queue
+- [D] Queue
+- [D] Circular Queue
+- [D] Priority Queue
+- [T] DoubleEnded Queue (DEQueue)
+- [T] Stack
+- [T] Semaphore
+
+- USE CASES:
+
+  - [] Normal Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+
+- [T] Add Event Handlers for queues
+
+  - [] BeforeEvent
+  - [] Event
+  - [] AfterEvent
+  - [] ErrorEvent
+
+- [] Consider RX.js features inbuilt https://github.com/reactivex/rxjs
+
+  - [] Consider base functions like
+    - Limit, Debounce, Throttle, Queue https://www.npmjs.com/package/p-limit
+    - [] https://www.npmjs.com/package/promise-throttle-all
+    - [] https://www.npmjs.com/package/concurrent-task
+    - [] https://www.npmjs.com/package/concurrencylimit
+  - [] Consider something similar or put as dependency https://www.npmjs.com/package/rx-queue
+  - [] https://www.npmjs.com/package/node-traffic
+  - Queues
+    - [] https://www.npmjs.com/package/partition-queue
+    - [] https://www.npmjs.com/package/rx-queue
+    - [] https://www.npmjs.com/package/task-queue
+    - [] https://www.npmjs.com/package/concurrency-queue
+    - [] https://www.npmjs.com/package/@sebowy/concurrent-queue
+
+- remove packages - "denque": "^2.1.0", "synchronization-js": "^1.0.4"
