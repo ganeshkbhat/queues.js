@@ -86,6 +86,15 @@ const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, Q
 
 ```
 
+### QueueTop (includes all Base methods)
+
+```
+
+const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, AsyncQueueTop, AsyncQueueTopLowFootprint } = require("queues.js");
+
+
+```
+
 ### Stack (includes all Base methods)
 
 ```
