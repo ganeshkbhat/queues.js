@@ -29,15 +29,15 @@ function Queue() {
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
-        enqueue: this.push,
-        dequeue: this.shift,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.shift(),
 
-        add: this.push,
-        insert: this.push,
-        push: this.push,
+        add: (item) => this.push(item),
+        insert: (item) => this.push(item),
+        push: (item) => this.push(item),
 
-        shift: this.shift,
-        remove: this.shift
+        shift: () => this.shift(),
+        remove: () => this.shift()
     };
 
     // 
@@ -45,15 +45,15 @@ function Queue() {
     //              ==>
     // 
     this.lifo = {
-        enqueue: this.push,
-        dequeue: this.pop,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.pop(),
 
-        add: this.push,
-        push: this.push,
-        insert: this.push,
+        add: (item) => this.push(item),
+        push: (item) => this.push(item),
+        insert: (item) => this.push(item),
 
-        pop: this.pop,
-        remove: this.pop
+        pop: () => this.pop(),
+        remove: () => this.pop()
     }
 
 }
@@ -72,15 +72,15 @@ function QueueLifo() {
     //              ==>
     // 
     this.lifo = {
-        enqueue: this.push,
-        dequeue: this.pop,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.pop(),
 
-        add: this.push,
-        push: this.push,
-        insert: this.push,
+        add: (item) => this.push(item),
+        push: (item) => this.push(item),
+        insert: (item) => this.push(item),
 
-        pop: this.pop,
-        remove: this.pop
+        pop: () => this.pop(),
+        remove: () => this.pop()
     }
 
     return this.lifo;
@@ -99,15 +99,15 @@ function QueueFifo() {
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
-        enqueue: this.push,
-        dequeue: this.shift,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.shift(),
 
-        add: this.push,
-        insert: this.push,
-        push: this.push,
+        add: (item) => this.push(item),
+        insert: (item) => this.push(item),
+        push: (item) => this.push(item),
 
-        shift: this.shift,
-        remove: this.shift
+        shift: () => this.shift(),
+        remove: () => this.shift()
     };
 
     return this.fifo;
@@ -128,15 +128,15 @@ function QueueLowFootprint() {
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
-        enqueue: this.push,
-        dequeue: this.shift,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.shift(),
 
-        add: this.push,
-        insert: this.push,
-        push: this.push,
+        add: (item) => this.push(item),
+        insert: (item) => this.push(item),
+        push: (item) => this.push(item),
 
-        shift: this.shift,
-        remove: this.shift
+        shift: () => this.shift(),
+        remove: () => this.shift()
     };
 
     // 
@@ -144,15 +144,15 @@ function QueueLowFootprint() {
     //              ==>
     //
     this.lifo = {
-        enqueue: this.push,
-        dequeue: this.pop,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.pop(),
 
-        add: this.push,
-        push: this.push,
-        insert: this.push,
+        add: (item) => this.push(item),
+        push: (item) => this.push(item),
+        insert: (item) => this.push(item),
 
-        pop: this.pop,
-        remove: this.pop
+        pop: () => this.pop(),
+        remove: () => this.pop()
     }
 
 }
@@ -172,19 +172,18 @@ function QueueLowFootprintFifo() {
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
-        enqueue: this.push,
-        dequeue: this.shift,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.shift(),
 
-        add: this.push,
-        insert: this.push,
-        push: this.push,
+        add: (item) => this.push(item),
+        insert: (item) => this.push(item),
+        push: (item) => this.push(item),
 
-        shift: this.shift,
-        remove: this.shift
+        shift: () => this.shift(),
+        remove: () => this.shift()
     };
 
     return this.fifo;
-
 }
 
 
@@ -200,19 +199,18 @@ function QueueLowFootprintLifo() {
     //              ==>
     //
     this.lifo = {
-        enqueue: this.push,
-        dequeue: this.pop,
+        enqueue: (item) => this.push(item),
+        dequeue: () => this.pop(),
 
-        add: this.push,
-        push: this.push,
-        insert: this.push,
+        add: (item) => this.push(item),
+        push: (item) => this.push(item),
+        insert: (item) => this.push(item),
 
-        pop: this.pop,
-        remove: this.pop
+        pop: () => this.pop(),
+        remove: () => this.pop()
     }
 
     return this.lifo;
-
 }
 
 /**

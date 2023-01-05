@@ -77,6 +77,10 @@ function Base(type = "end") {
         return item;
     }
 
+    this.insertItem = function insertItem(item, index, counter = "") {
+        return this.insertAtIndex(item, index, counter);
+    }
+
     this.replaceAtIndex = function replaceAtIndex(item, index, counter = "") {
         if (this.items.length === 0) return undefined;
         this.items[index] = item;
@@ -110,20 +114,20 @@ function Base(type = "end") {
         }
     }
 
-    this.push = function push(item, counter = "") {
-        return this.insertAtIndex(item, (this.items.length - 1), counter);
+    this.push = function push(item, counter = "+") {
+        return this.insertItem(item, (this.items.length - 1), counter);
     }
 
-    this.pushFront = function pushFront(item, counter = "") {
-        return this.insertAtIndex(item, 0, counter);
+    this.pushFront = function pushFront(item, counter = "-") {
+        return this.insertItem(item, 0, counter);
     }
 
     this.pop = function pop(counter = "-") {
-        return this.removeAtIndex((this.items.length - 1), counter);
+        return this.removeItem((this.items.length - 1), counter);
     }
 
     this.shift = function shift(counter = "+") {
-        return this.removeAtIndex(0, counter);
+        return this.removeItem(0, counter);
     }
 
     this.insertFront = this.pushFront;
