@@ -20,26 +20,28 @@ var QueueLifo = require("queues.js").QueueFifo;
 // FIFO BOTTOM QUEUE IMPLEMENTATION
 //   <==   [1,2,3,4]  <==
 var fifo = new QueueFifo();
-fifo.enqueue(item, counter = "");
-fifo.dequeue(counter = "+");
-fifo.add(item, counter = "");
-fifo.insert(item, counter = "");
-fifo.push(item, counter = "");
-fifo.shift(counter = "+");
-fifo.remove(counter = "+");
+fifo.enqueue(item);
+fifo.add(item);
+fifo.insert(item);
+fifo.push(item);
+
+fifo.dequeue();
+fifo.shift();
+fifo.remove();
 
 
 // LIFO BOTTOM QUEUE IMPLEMENTATION
 //   [1,2,3,4]  <==
 //              ==>
 var lifo = new QueueLifo();
-lifo.enqueue(item, counter = "");
-lifo.dequeue(counter = "-");
-lifo.add(item, counter = "");
-lifo.push(item, counter = "");
-lifo.insert(item, counter = "");
-lifo.pop(counter = "-");
-lifo.remove(counter = "-");
+lifo.enqueue(item);
+lifo.add(item);
+lifo.push(item);
+lifo.insert(item);
+
+lifo.dequeue();
+lifo.pop();
+lifo.remove();
 
 
 ```
