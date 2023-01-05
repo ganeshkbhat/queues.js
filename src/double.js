@@ -35,6 +35,8 @@ function DoubleEnded() {
         getRear: this.getRear,
         isEmpty: this.isEmpty
     }
+
+    return this.double;
 }
 
 /**
@@ -68,6 +70,8 @@ function DoubleEndedLowFootprint() {
         getRear: this.getRear,
         isEmpty: this.isEmpty
     }
+
+    return this.double;
 }
 
 /**

@@ -19,7 +19,8 @@ import { default as queues } from "./index.js";
 
 import {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
-    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
+    Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
+    AsyncQueue, AsyncQueueLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
@@ -30,7 +31,8 @@ export default queues;
 
 export {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
-    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
+    Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
+    AsyncQueue, AsyncQueueLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,

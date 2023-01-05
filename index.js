@@ -18,7 +18,7 @@
 // const { Queue, QueueLowFootprint, AsyncQueue } = require("./src/queue.js");
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./src/base.js");
 
-const { Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint } = require("./src/queue.js");
+const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, AsyncQueue, AsyncQueueLowFootprint } = require("./src/queue.js");
 const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require("./src/stack.js");
 const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint } = require("./src/priority.js");
 const { Circular, AsyncCircular } = require("./src/circular.js");
@@ -33,6 +33,12 @@ module.exports.AsyncBaseLowFootPrint = AsyncBaseLowFootPrint;
 
 module.exports.Queue = Queue;
 module.exports.QueueLowFootprint = QueueLowFootprint;
+
+module.exports.QueueLifo = QueueLifo;
+module.exports.QueueFifo = QueueFifo;
+module.exports.QueueLowFootprintLifo = QueueLowFootprintLifo;
+module.exports.QueueLowFootprintFifo = QueueLowFootprintFifo;
+
 module.exports.AsyncQueue = AsyncQueue;
 module.exports.AsyncQueueLowFootprint = AsyncQueueLowFootprint;
 
@@ -56,7 +62,8 @@ module.exports.AsyncCircular = AsyncCircular;
 
 module.exports.default = {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
-    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
+    Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, 
+    AsyncQueue, AsyncQueueLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
