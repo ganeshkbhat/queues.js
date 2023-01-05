@@ -18,7 +18,8 @@
 // const { Queue, QueueLowFootprint, AsyncQueue } = require("./src/queue.js");
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./src/base.js");
 
-const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, AsyncQueue, AsyncQueueLowFootprint } = require("./src/queue.js");
+const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, AsyncQueue, AsyncQueueLowFootprint } = require("./src/queue.bottom.js");
+const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, AsyncQueueTop, AsyncQueueTopLowFootprint } = require("./src/queue.top.js");
 const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require("./src/stack.js");
 const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint } = require("./src/priority.js");
 const { Circular, AsyncCircular } = require("./src/circular.js");
@@ -42,6 +43,19 @@ module.exports.QueueLowFootprintFifo = QueueLowFootprintFifo;
 module.exports.AsyncQueue = AsyncQueue;
 module.exports.AsyncQueueLowFootprint = AsyncQueueLowFootprint;
 
+
+module.exports.QueueTop = QueueTop;
+module.exports.QueueTopLowFootprint = QueueTopLowFootprint;
+
+module.exports.QueueTopLifo = QueueTopLifo;
+module.exports.QueueTopFifo = QueueTopFifo;
+module.exports.QueueTopLowFootprintLifo = QueueTopLowFootprintLifo;
+module.exports.QueueTopLowFootprintFifo = QueueTopLowFootprintFifo;
+
+module.exports.AsyncQueueTop = AsyncQueueTop;
+module.exports.AsyncQueueTopLowFootprint = AsyncQueueTopLowFootprint;
+
+
 module.exports.Stack = Stack;
 module.exports.StackLowFootprint = StackLowFootprint;
 module.exports.AsyncStack = AsyncStack;
@@ -64,6 +78,8 @@ module.exports.default = {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, 
     AsyncQueue, AsyncQueueLowFootprint,
+    QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, 
+    AsyncQueueTop, AsyncQueueTopLowFootprint,
     Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
