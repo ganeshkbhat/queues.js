@@ -129,7 +129,7 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 ```
 
 
-![Double Ended Queue](./docs//architecture/Double%20Ended%20Queues.jpg)
+![Double Ended Queue](./docs/architecture/Double%20Ended%20Queues.jpg)
 
 
 ### Semaphore (includes all Base methods)
