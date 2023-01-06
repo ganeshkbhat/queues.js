@@ -14,3 +14,6 @@
 /* eslint no-console: 0 */
 
 'use strict';
+
+var queue = require("../index.js").QueueLowFootprintFifo;
+

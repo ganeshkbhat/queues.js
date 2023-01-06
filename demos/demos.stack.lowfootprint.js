@@ -14,3 +14,6 @@
 /* eslint no-console: 0 */
 
 'use strict';
+
+var stack = require("../index.js").StackLowFootprint;
+

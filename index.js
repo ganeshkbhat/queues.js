@@ -20,7 +20,7 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
 
 const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, AsyncQueue, AsyncQueueLowFootprint } = require("./src/queue.bottom.js");
 const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, AsyncQueueTop, AsyncQueueTopLowFootprint } = require("./src/queue.top.js");
-const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require("./src/stack.js");
+const { Stack, StackFifo, StackLifo, StackLowFootprint, StackLowFootprintFifo, StackLowFootprintLifo, AsyncStack, AsyncStackLowFootprint } = require("./src/stack.js");
 const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint } = require("./src/priority.js");
 const { Circular, AsyncCircular } = require("./src/circular.js");
 const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint } = require("./src/double.js");
@@ -56,11 +56,6 @@ module.exports.AsyncQueueTop = AsyncQueueTop;
 module.exports.AsyncQueueTopLowFootprint = AsyncQueueTopLowFootprint;
 
 
-module.exports.Stack = Stack;
-module.exports.StackLowFootprint = StackLowFootprint;
-module.exports.AsyncStack = AsyncStack;
-module.exports.AsyncStackLowFootprint = AsyncStackLowFootprint;
-
 module.exports.DoubleEnded = DoubleEnded;
 module.exports.DoubleEndedLowFootprint = DoubleEndedLowFootprint;
 module.exports.AsyncDoubleEnded = AsyncDoubleEnded;
@@ -74,13 +69,26 @@ module.exports.AsyncPriorityLowFootprint = AsyncPriorityLowFootprint;
 module.exports.Circular = Circular;
 module.exports.AsyncCircular = AsyncCircular;
 
+module.exports.Stack = Stack;
+module.exports.StackFifo = StackFifo;
+module.exports.StackLifo = StackLifo;
+
+module.exports.StackLowFootprint = StackLowFootprint;
+module.exports.StackLowFootprintFifo = StackLowFootprintFifo;
+module.exports.StackLowFootprintLifo = StackLowFootprintLifo;
+
+module.exports.AsyncStack = AsyncStack;
+module.exports.AsyncStackLowFootprint = AsyncStackLowFootprint;
+
+
 module.exports.default = {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, 
     AsyncQueue, AsyncQueueLowFootprint,
     QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, 
     AsyncQueueTop, AsyncQueueTopLowFootprint,
-    Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
+    Stack, StackFifo, StackLifo, StackLowFootprint, StackLowFootprintFifo, StackLowFootprintLifo,
+    AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
     Circular, AsyncCircular, Semaphore
