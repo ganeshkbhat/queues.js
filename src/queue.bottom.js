@@ -25,6 +25,8 @@ function Queue() {
 
     Base.call(this);
 
+    this.superBase = this;
+
     // 
     //   <==   [1,2,3,4]  <==
     // 
@@ -67,6 +69,8 @@ function QueueLifo() {
 
     Base.call(this);
 
+    this.superBase = this;
+
     // 
     //   [1,2,3,4]  <==
     //              ==>
@@ -80,10 +84,18 @@ function QueueLifo() {
         insert: (item) => this.push(item),
 
         pop: () => this.pop(),
-        remove: () => this.pop()
+        remove: () => this.pop(),
+
+        clear: this.clear,
+        isEmpty: this.isEmpty,
+        peek: this.peek,
+        size: this.size,
+        toArray: this.toArray,
+        getFront: this.getFront,
+        getRear: this.getRear
     }
 
-    return this.lifo;
+    // return this.lifo;
 
 }
 
@@ -94,6 +106,8 @@ function QueueLifo() {
 function QueueFifo() {
 
     Base.call(this);
+
+    this.superBase = this;
 
     // 
     //   <==   [1,2,3,4]  <==
@@ -110,7 +124,7 @@ function QueueFifo() {
         remove: () => this.shift()
     };
 
-    return this.fifo;
+    // return this.fifo;
 
 }
 
@@ -120,6 +134,8 @@ function QueueFifo() {
  */
 function QueueLowFootprint() {
     BaseLowFootprint.call(this);
+
+    this.superBase = this;
 
     // this.enqueue = function enqueue(item) { }
     // this.dequeue = function dequeue() { }
@@ -165,6 +181,8 @@ function QueueLowFootprint() {
 function QueueLowFootprintFifo() {
     BaseLowFootprint.call(this);
 
+    this.superBase = this;
+
     // this.enqueue = function enqueue(item) { }
     // this.dequeue = function dequeue() { }
 
@@ -193,6 +211,8 @@ function QueueLowFootprintFifo() {
  */
 function QueueLowFootprintLifo() {
     BaseLowFootprint.call(this);
+
+    this.superBase = this;
 
     // 
     //   [1,2,3,4]  <==

@@ -86,6 +86,12 @@ const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, Q
 
 ```
 
+![Queue Bottom Fifo](./docs//architecture/Bottom%20Queues%20-%20Fifo.jpg)
+
+![Queue Bottom Lifo](./docs//architecture/Bottom%20Queues%20-%20Lifo.jpg)
+
+
+
 ### QueueTop (includes all Base methods)
 
 ```
@@ -94,6 +100,12 @@ const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowF
 
 
 ```
+
+![Queue Top Fifo](./docs//architecture/Top%20Queues%20-%20Fifo.jpg)
+
+![Queue Top Lifo](./docs//architecture/Top%20Queues%20-%20Lifo.jpg)
+
+
 
 ### Stack (includes all Base methods)
 
@@ -104,6 +116,9 @@ const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require
 
 ```
 
+![Stack](./docs//architecture/Stack.jpg)
+
+
 ### Double - Denqueue (includes all Base methods)
 
 ```
@@ -112,6 +127,10 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 
 
 ```
+
+
+![Double Ended Queue](./docs//architecture/Double%20Ended%20Queues.jpg)
+
 
 ### Semaphore (includes all Base methods)
 
