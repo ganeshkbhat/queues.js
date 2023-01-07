@@ -169,6 +169,19 @@ const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint
 ![Priority Queue](./docs/architecture/Priority%20Queues.jpg)
 
 
+### Circular Queue (includes all Base methods)
+
+```
+
+const { Circular, AsyncCircular } = require("queues.js");
+
+
+```
+
+
+![Circular Queue](./docs/architecture/Circular%20Queues.jpg)
+
+
 
 ### Contributions
 
