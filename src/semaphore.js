@@ -17,6 +17,45 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+/**
+ *
+ *
+ * @param {*} initialValue
+ */
+function SemaphoreQueue(initialValue) {
+
+  Base.call(this);
+
+  this.superBase = this;
+
+  this.count = initialValue;
+  this.lock = false;
+
+  /**
+   * Decrement the semaphore
+   */
+  async function P() { }
+
+  /**
+   * Increment the semaphore
+   */
+  async function V() { }
+
+  async function use() { }
+
+  function value() {
+    return this.count;
+  }
+
+
+}
+
+
+/**
+ *
+ *
+ * @param {*} initialValue
+ */
 function Semaphore(initialValue) {
   this.count;
   this.awaiters = new Queue();
@@ -59,7 +98,12 @@ function Semaphore(initialValue) {
   }
 }
 
-module.exports.Semaphore = Semaphore;
+SemaphoreQueue.prototype = Object.create(SemaphoreQueue.prototype);
+SemaphoreQueue.prototype.constructor = SemaphoreQueue;
 
-module.exports.default = { Semaphore };
+
+module.exports.Semaphore = Semaphore;
+module.exports.SemaphoreQueue = SemaphoreQueue;
+
+module.exports.default = { Semaphore, SemaphoreQueue };
 

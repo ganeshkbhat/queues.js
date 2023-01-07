@@ -16,7 +16,17 @@
 
 'use strict';
 
+const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
+
 function WaitQueue() {
+
+    Base.call(this);
+
+    this.superBase = this;
+
+    this.wait_queue = function wait_queue() { }
+    
+    this.signal = function signal() { }
 
 }
 
