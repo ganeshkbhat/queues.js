@@ -25,7 +25,7 @@ fifo.push(4);
 fifo.enqueue(1);
 fifo.add(2);
 fifo.insert(3);
-fifo.push(4);
+fifo.push(5);
 console.log(fifo.size());
 console.log(fifo.toArray());
 

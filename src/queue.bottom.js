@@ -39,7 +39,15 @@ function Queue() {
         push: (item) => this.push(item),
 
         shift: () => this.shift(),
-        remove: () => this.shift()
+        remove: () => this.shift(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     };
 
     // 
@@ -55,8 +63,19 @@ function Queue() {
         insert: (item) => this.push(item),
 
         pop: () => this.pop(),
-        remove: () => this.pop()
+        remove: () => this.pop(),
+
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     }
+
+    return { lifo: this.lifo, fifo: this.fifo };
 
 }
 
@@ -86,16 +105,16 @@ function QueueLifo() {
         pop: () => this.pop(),
         remove: () => this.pop(),
 
-        clear: this.clear,
-        isEmpty: this.isEmpty,
-        peek: this.peek,
-        size: this.size,
-        toArray: this.toArray,
-        getFront: this.getFront,
-        getRear: this.getRear
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     }
 
-    // return this.lifo;
+    return this.lifo;
 
 }
 
@@ -121,10 +140,18 @@ function QueueFifo() {
         push: (item) => this.push(item),
 
         shift: () => this.shift(),
-        remove: () => this.shift()
+        remove: () => this.shift(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     };
 
-    // return this.fifo;
+    return this.fifo;
 
 }
 
@@ -152,7 +179,15 @@ function QueueLowFootprint() {
         push: (item) => this.push(item),
 
         shift: () => this.shift(),
-        remove: () => this.shift()
+        remove: () => this.shift(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     };
 
     // 
@@ -168,9 +203,18 @@ function QueueLowFootprint() {
         insert: (item) => this.push(item),
 
         pop: () => this.pop(),
-        remove: () => this.pop()
+        remove: () => this.pop(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     }
 
+    return { lifo: this.lifo, fifo: this.fifo };
 }
 
 
@@ -182,6 +226,8 @@ function QueueLowFootprintFifo() {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    // console.log(this.items)
 
     // this.enqueue = function enqueue(item) { }
     // this.dequeue = function dequeue() { }
@@ -198,7 +244,15 @@ function QueueLowFootprintFifo() {
         push: (item) => this.push(item),
 
         shift: () => this.shift(),
-        remove: () => this.shift()
+        remove: () => this.shift(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     };
 
     return this.fifo;
@@ -227,7 +281,15 @@ function QueueLowFootprintLifo() {
         insert: (item) => this.push(item),
 
         pop: () => this.pop(),
-        remove: () => this.pop()
+        remove: () => this.pop(),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
     }
 
     return this.lifo;
