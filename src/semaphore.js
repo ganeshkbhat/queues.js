@@ -60,5 +60,6 @@ function Semaphore(initialValue) {
 }
 
 module.exports.Semaphore = Semaphore;
+
 module.exports.default = { Semaphore };
 

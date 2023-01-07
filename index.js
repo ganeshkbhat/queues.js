@@ -25,7 +25,7 @@ const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint
 const { Circular, AsyncCircular } = require("./src/circular.js");
 const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint } = require("./src/double.js");
 const { Semaphore } = require("./src/semaphore.js");
-
+const { WaitQueue } = require("./src/wait.js");
 
 module.exports.Base = Base;
 module.exports.BaseLowFootprint = BaseLowFootprint;
@@ -80,6 +80,8 @@ module.exports.StackLowFootprintLifo = StackLowFootprintLifo;
 module.exports.AsyncStack = AsyncStack;
 module.exports.AsyncStackLowFootprint = AsyncStackLowFootprint;
 
+module.exports.Semaphore = Semaphore;
+module.exports.WaitQueue = WaitQueue;
 
 module.exports.default = {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
@@ -91,5 +93,5 @@ module.exports.default = {
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore
+    Circular, AsyncCircular, Semaphore, WaitQueue
 };

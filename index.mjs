@@ -27,7 +27,7 @@ import {
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore
+    Circular, AsyncCircular, Semaphore, WaitQueue
 } from "./index.js";
 
 export default queues;
@@ -42,5 +42,5 @@ export {
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore
+    Circular, AsyncCircular, Semaphore, WaitQueue
 };
