@@ -15,5 +15,24 @@
 
 'use strict';
 
-var queue = require("../index.js").QueueTopLowFootprint;
+var Queue = require("../index.js").QueueTopLowFootprint;
+var queue = new Queue();
+
+queue.enqueue(1);
+queue.add(2);
+queue.insert(3);
+queue.push(4);
+queue.enqueue(1);
+queue.add(2);
+queue.insert(3);
+queue.push(5);
+console.log(queue.size());
+console.log(queue.toArray());
+
+console.log(queue.dequeue());
+console.log(queue.shift());
+console.log(queue.remove());
+
+console.log(queue.size());
+console.log(queue.toArray());
 

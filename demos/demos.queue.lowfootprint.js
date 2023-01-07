@@ -15,5 +15,5 @@
 
 'use strict';
 
-var queue = require("../index.js").QueueLowFootprint;
+var Queue = require("../index.js").QueueLowFootprint;
 

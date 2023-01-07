@@ -15,5 +15,23 @@
 
 'use strict';
 
-var queue = require("../index.js").QueueTopLowFootprintFifo;
+var Queue = require("../index.js").QueueLowFootprintFifo;
+var fifo = new Queue();
 
+fifo.enqueue(1);
+fifo.add(2);
+fifo.insert(3);
+fifo.push(4);
+fifo.enqueue(1);
+fifo.add(2);
+fifo.insert(3);
+fifo.push(5);
+console.log(fifo.size());
+console.log(fifo.toArray());
+
+console.log(fifo.dequeue());
+console.log(fifo.shift());
+console.log(fifo.remove());
+
+console.log(fifo.size());
+console.log(fifo.toArray());

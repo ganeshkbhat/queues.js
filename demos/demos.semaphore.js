@@ -14,3 +14,6 @@
 /* eslint no-console: 0 */
 
 'use strict';
+
+var Queue = require("../index.js").Semaphore;
+var semaphore = new Queue();
