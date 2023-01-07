@@ -79,6 +79,7 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("qu
 // BaseLowFootprint - Non-Persistent Queue
 // Queue - Persistent Queue
 // QueueLowFootprint - Non-Persistent Queue
+// All LowFootprint names classes / functions are non-persistent queues
 
 ```
 
