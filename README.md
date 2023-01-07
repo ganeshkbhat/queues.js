@@ -75,7 +75,17 @@ var lifo = new QueueLifo();
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("queues.js");
 
+// Base - Persistent Queue
+// BaseLowFootprint - Non-Persistent Queue
+// Queue - Persistent Queue
+// QueueLowFootprint - Non-Persistent Queue
+
 ```
+
+
+![Queue Types](./docs/architecture/Queue%20Types.jpg)
+
+
 
 ### Queue (includes all Base methods)
 
