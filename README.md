@@ -150,7 +150,16 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 
 ```
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("queues.js");
+const { Semaphore } = require("queues.js");
+
+
+```
+
+### WaitQueue (includes all Base methods)
+
+```
+
+const { WaitQueue } = require("queues.js");
 
 
 ```
