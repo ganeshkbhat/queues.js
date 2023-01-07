@@ -18,14 +18,24 @@
 
 const {
     Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
-    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
-    Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
+    Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, 
+    AsyncQueue, AsyncQueueLowFootprint,
+    QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, 
+    AsyncQueueTop, AsyncQueueTopLowFootprint,
+    Stack, StackFifo, StackLifo, StackLowFootprint, StackLowFootprintFifo, StackLowFootprintLifo,
+    AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
-    Semaphore
+    Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
+    Circular, AsyncCircular, Semaphore
 } = require("../index.js");
 
 console.log(Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
-    Queue, QueueLowFootprint, AsyncQueue, AsyncQueueLowFootprint,
-    Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint,
+    Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, 
+    AsyncQueue, AsyncQueueLowFootprint,
+    QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, 
+    AsyncQueueTop, AsyncQueueTopLowFootprint,
+    Stack, StackFifo, StackLifo, StackLowFootprint, StackLowFootprintFifo, StackLowFootprintLifo,
+    AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
-    Semaphore)
+    Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
+    Circular, AsyncCircular, Semaphore)
