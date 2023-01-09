@@ -22,16 +22,20 @@ lifo.enqueue(1);
 lifo.add(2);
 lifo.insert(3);
 lifo.push(4);
-lifo.enqueue(1);
-lifo.add(2);
-lifo.insert(3);
-lifo.push(5);
-console.log(lifo.size());
-console.log(lifo.toArray());
+lifo.enqueue(5);
+lifo.add(6);
+lifo.insert(7);
+lifo.push(8);
+
+
+console.log(".size()", lifo.size());
+console.log(".toArray()", lifo.toArray());
 
 console.log(lifo.dequeue());
-console.log(lifo.shift());
+console.log(lifo.pop());
 console.log(lifo.remove());
 
-console.log(lifo.size());
-console.log(lifo.toArray());
+
+console.log(".size()", lifo.size());
+console.log(".toArray()", lifo.toArray());
+

@@ -18,20 +18,48 @@
 var Queue = require("../index.js").QueueTop;
 var queue = new Queue();
 
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(4);
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(5);
-console.log(queue.size());
-console.log(queue.toArray());
+// LIFO
 
-console.log(queue.dequeue());
-console.log(queue.shift());
-console.log(queue.remove());
+queue.lifo.enqueue(1);
+queue.lifo.add(2);
+queue.lifo.insert(3);
+queue.lifo.push(4);
+queue.lifo.enqueue(5);
+queue.lifo.add(6);
+queue.lifo.insert(7);
+queue.lifo.push(8);
 
-console.log(queue.size());
-console.log(queue.toArray());
+console.log(".size()", queue.lifo.size());
+console.log(".toArray()", queue.lifo.toArray());
+
+console.log(queue.lifo.dequeue());
+console.log(queue.lifo.pop());
+console.log(queue.lifo.remove());
+
+console.log(".size()", queue.lifo.size());
+console.log(".toArray()", queue.lifo.toArray());
+
+queue.lifo.clear();
+queue.lifo.reset();
+
+// FIFO
+
+queue.fifo.enqueue(1);
+queue.fifo.add(2);
+queue.fifo.insert(3);
+queue.fifo.push(4);
+queue.fifo.enqueue(5);
+queue.fifo.add(6);
+queue.fifo.insert(7);
+queue.fifo.push(8);
+
+console.log(".size()", queue.fifo.size());
+console.log(".toArray()", queue.fifo.toArray());
+
+console.log(queue.fifo.dequeue());
+console.log(queue.fifo.shift());
+console.log(queue.fifo.remove());
+
+console.log(".size()", queue.fifo.size());
+console.log(".toArray()", queue.fifo.toArray());
+

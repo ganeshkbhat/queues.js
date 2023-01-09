@@ -1,22 +1,13 @@
 [TODO]
 
 - [D] Base Queue
-- [D] Queue
-- [D] Circular Queue
-- [D] Priority Queue
-- [T] DoubleEnded Queue (DEQueue)
-- [T] Stack
-- [T] Semaphore
-
-- USE CASES:
-
-  - [] Normal Implement
-    - [] Cached Counter Base
-      - [] LIFO
-      - [] FIFO
-    - [] Low memory foot print
-      - [] LIFO
-      - [] FIFO
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
   - [] Async Implement
     - [] Cached Counter Base
       - [] LIFO
@@ -24,6 +15,129 @@
     - [] Low memory foot print
       - [] LIFO
       - [] FIFO
+- [D] Bottom Queue
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [D] Top Queue
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [D] Stack
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [D] Circular Queue
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [D] Priority Queue
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [D] DoubleEnded Queue (DEQueue)
+  - [D] Normal Implement
+    - [D] Cached Counter Base
+      - [D] LIFO
+      - [D] FIFO
+    - [D] Low memory foot print
+      - [D] LIFO
+      - [D] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [T] WaitQueue
+  - [T] Normal Implement
+    - [T] Cached Counter Base
+      - [T] LIFO
+      - [T] FIFO
+    - [T] Low memory foot print
+      - [T] LIFO
+      - [T] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+- [T] Semaphore
+  - [T] Normal Implement
+    - [T] Cached Counter Base
+      - [T] LIFO
+      - [T] FIFO
+    - [T] Low memory foot print
+      - [T] LIFO
+      - [T] FIFO
+  - [] Async Implement
+    - [] Cached Counter Base
+      - [] LIFO
+      - [] FIFO
+    - [] Low memory foot print
+      - [] LIFO
+      - [] FIFO
+
+
+- USE CASES:
 
 - [T] Add Event Handlers for queues
 

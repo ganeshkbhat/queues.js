@@ -21,7 +21,7 @@
  *
  *
  */
-function Base(type = "end") {
+function Base(type = "bottom") {
 
     /**
      * end - bottomended
@@ -49,7 +49,7 @@ function Base(type = "end") {
 
     // 
     // this.offset is used for
-    // endLifo
+    // endLifo / bottomLifo
     //   <==   [1,2,3,4]  <==
     //
 
@@ -70,10 +70,8 @@ function Base(type = "end") {
     // 
 
     this.insertAtIndex = function insertAtIndex(item, index, counter = "") {
-        this.items = [...this.items.splice(0, (index - 1)), item, ...this.items.splice(0, this.items.length - 1)];
-        if (index > this.offset) {
-            this.offsetCounter("+");
-        }
+        this.items = [...this.items.splice(0, index), item, ...this.items];
+        this.offsetCounter(counter);
         return item;
     }
 
@@ -84,18 +82,13 @@ function Base(type = "end") {
     this.replaceAtIndex = function replaceAtIndex(item, index, counter = "") {
         if (this.items.length === 0) return undefined;
         this.items[index] = item;
-        if (index > this.offset) {
-            this.offsetCounter("+");
-        }
         return item;
     }
 
     this.removeAtIndex = function removeAtIndex(index = 0, counter = "") {
         if (this.items.length === 0) return undefined;
-        let item = this.items.splice(index, 1);
-        if (index < this.offset) {
-            this.offsetCounter("-");
-        }
+        let item = this.items[index];
+        this.offsetCounter(counter);
         return item;
     }
 
@@ -114,20 +107,20 @@ function Base(type = "end") {
         }
     }
 
-    this.push = function push(item, counter = "+") {
-        return this.insertItem(item, (this.items.length - 1), counter);
+    this.push = function push(item, counter = "") {
+        return this.insertItem(item, this.items.length, counter);
     }
 
-    this.pushFront = function pushFront(item, counter = "-") {
+    this.pushFront = function pushFront(item, counter = "") {
         return this.insertItem(item, 0, counter);
     }
 
     this.pop = function pop(counter = "-") {
-        return this.removeItem((this.items.length - 1), counter);
+        return this.removeAtIndex(this.offset, counter);
     }
 
     this.shift = function shift(counter = "+") {
-        return this.removeItem(0, counter);
+        return this.removeAtIndex(this.offset, counter);
     }
 
     this.insertFront = this.pushFront;
@@ -136,12 +129,16 @@ function Base(type = "end") {
     this.deleteFront = this.shift;
     this.deleteLast = this.pop;
 
-    this.enqueue = function enqueue(item) { }
-    // dequeueOrWait
-    this.dequeue = function dequeue() { }
+    // this.enqueue = function enqueue(item) { }
+    // // dequeueOrWait
+    // this.dequeue = function dequeue() { }
 
     this.clear = function clear() {
         this.items = [];
+    }
+
+    this.reset = function reset() {
+        this.offset = 0;
     }
 
     this.isEmpty = function isEmpty() {
@@ -161,7 +158,6 @@ function Base(type = "end") {
     }
 
     this.toArray = function toArray() {
-        // return this.items.slice(0, (this.items.length - 1));
         return [...this.items];
     }
 }

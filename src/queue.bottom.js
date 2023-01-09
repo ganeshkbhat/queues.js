@@ -17,35 +17,62 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+
 /**
  *
  *
  */
-function Queue() {
+function Queue(method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.method = method;
+
+    this.size = function size() {
+        return this.items.length - this.offset;
+    }
+
+    this.toArray = function toArray() {
+        return [...this.items];
+    }
+
+    this.reset = function reset() {
+        this.offset = 0;
+    }
+
+    this.lifoSize = function size() {
+        return (this.offset === 0) ? this.items.length : this.offset + 1;
+    }
+
+    this.lifoToArray = function toArray() {
+        return [...this.items];
+    }
+
+    this.lifoReset = function reset() {
+        this.offset = this.items.length;
+    }
 
     // 
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
         enqueue: (item) => this.push(item),
-        dequeue: () => this.shift(),
+        dequeue: () => this.shift("+"),
 
         add: (item) => this.push(item),
         insert: (item) => this.push(item),
         push: (item) => this.push(item),
 
-        shift: () => this.shift(),
-        remove: () => this.shift(),
+        shift: () => this.shift("+"),
+        remove: () => this.shift("+"),
 
         clear: () => this.clear(),
+        reset: () => this.reset("fifo"),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size(),
-        toArray: () => this.toArray(),
+        size: () => this.size("fifo"),
+        toArray: () => this.toArray("fifo"),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     };
@@ -55,22 +82,22 @@ function Queue() {
     //              ==>
     // 
     this.lifo = {
-        enqueue: (item) => this.push(item),
-        dequeue: () => this.pop(),
+        enqueue: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        dequeue: () => this.pop("-"),
 
-        add: (item) => this.push(item),
-        push: (item) => this.push(item),
-        insert: (item) => this.push(item),
+        add: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
 
-        pop: () => this.pop(),
-        remove: () => this.pop(),
-
+        pop: () => this.pop("-"),
+        remove: () => this.pop("-"),
 
         clear: () => this.clear(),
+        reset: () => this.lifoReset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size(),
-        toArray: () => this.toArray(),
+        size: () => this.lifoSize("lifo"),
+        toArray: () => this.lifoToArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     }
@@ -84,76 +111,92 @@ function Queue() {
  *
  *
  */
-function QueueLifo() {
+function QueueLifo(method = "lifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.method = method;
+
+    this.size = function size() {
+        return (this.method === "lifo") ? (this.offset === 0) ? this.items.length : this.offset + 1 : this.items.length - this.offset;
+    }
+
+    this.toArray = function toArray() {
+        return [...this.items];
+    }
+
+    this.reset = function reset() {
+        this.offset = (this.method = "lifo") ? this.items.length : 0;
+    }
 
     // 
     //   [1,2,3,4]  <==
     //              ==>
     // 
     this.lifo = {
-        enqueue: (item) => this.push(item),
-        dequeue: () => this.pop(),
+        enqueue: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        dequeue: () => this.pop("-"),
 
-        add: (item) => this.push(item),
-        push: (item) => this.push(item),
-        insert: (item) => this.push(item),
+        add: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
+        insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.push(item) },
 
-        pop: () => this.pop(),
-        remove: () => this.pop(),
+        pop: () => this.pop("-"),
+        remove: () => this.pop("-"),
 
         clear: () => this.clear(),
+        reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size(),
+        size: () => this.size("lifo"),
         toArray: () => this.toArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     }
 
     return this.lifo;
-
 }
+
 
 /**
  *
  *
  */
-function QueueFifo() {
+function QueueFifo(method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.method = method;
 
     // 
     //   <==   [1,2,3,4]  <==
     // 
     this.fifo = {
         enqueue: (item) => this.push(item),
-        dequeue: () => this.shift(),
+        dequeue: () => this.shift("+"),
 
         add: (item) => this.push(item),
         insert: (item) => this.push(item),
         push: (item) => this.push(item),
 
-        shift: () => this.shift(),
-        remove: () => this.shift(),
+        shift: () => this.shift("+"),
+        remove: () => this.shift("+"),
 
         clear: () => this.clear(),
+        reset: () => this.reset("fifo"),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size(),
-        toArray: () => this.toArray(),
+        size: () => this.size("fifo"),
+        toArray: () => this.toArray("fifo"),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     };
 
     return this.fifo;
-
 }
+
 
 /**
  *
