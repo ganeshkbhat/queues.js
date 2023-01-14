@@ -17,6 +17,7 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+
 /**
  *
  *
@@ -33,11 +34,18 @@ function DoubleEnded() {
         deleteLast: this.deleteLast,
         getFront: this.peek,
         getRear: this.getRear,
-        isEmpty: this.isEmpty
+        
+        clear: () => this.clear(),
+        reset: () => this.reset("fifo"),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size("fifo"),
+        toArray: () => this.toArray("fifo")
     }
 
     return this.double;
 }
+
 
 /**
  *
@@ -74,6 +82,7 @@ function DoubleEndedLowFootprint() {
     return this.double;
 }
 
+
 /**
  *
  *
@@ -84,6 +93,7 @@ function AsyncDoubleEnded() {
     this.superBase = this;
 }
 
+
 /**
  *
  *
@@ -93,6 +103,7 @@ function AsyncDoubleEndedLowFootprint() {
 
     this.superBase = this;
 }
+
 
 DoubleEnded.prototype = Object.create(Base.prototype);
 DoubleEnded.prototype.constructor = DoubleEnded;

@@ -80,6 +80,7 @@ function Priority() {
 Priority.prototype = Object.create(Base.prototype);
 Priority.prototype.constructor = Priority;
 
+
 /**
  *
  *
@@ -120,6 +121,7 @@ function PriorityLowFootprint() {
 PriorityLowFootprint.prototype = Object.create(BaseLowFootprint.prototype);
 PriorityLowFootprint.prototype.constructor = PriorityLowFootprint;
 
+
 /**
  *
  *
@@ -134,6 +136,7 @@ function AsyncPriority() {
 
 AsyncPriority.prototype = Object.create(AsyncBase.prototype);
 AsyncPriority.prototype.constructor = AsyncPriority;
+
 
 /**
  *

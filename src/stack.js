@@ -17,37 +17,67 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+
 /**
- * Stack LIFO / FIFO Implementation
+ * Stack FIFO Implementation
  *
  */
-function Stack() {
+function Stack(method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.method = method;
 
-    //   ==>   [1,2,3,4]  ==>
-    this.fifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.pop,
-        pop: this.pop
-    };
-
-    //   ==> [1,2,3,4]
-    //   <==
-    this.lifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.shift,
-        shift: this.shift
+    this.size = function size() {
+        return this.items.length - this.offset;
     }
 
+    this.toArray = function toArray() {
+        return [...this.items];
+    }
+
+    this.reset = function reset() {
+        this.offset = 0;
+    }
+
+    this.fifoSize = function size() {
+        return (this.offset === 0) ? this.items.length : this.offset + 1;
+    }
+
+    this.fifoToArray = function toArray() {
+        return [...this.items];
+    }
+
+    this.fifoReset = function reset() {
+        this.offset = this.items.length;
+    }
+
+    // 
+    //   ==>   [1,2,3,4]  ==>
+    // 
+    this.fifo = {
+        enqueue: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
+        dequeue: () => this.pop("-"),
+
+        add: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
+        push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
+        insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
+
+        shift: () => this.pop("-"),
+        remove: () => this.pop("-"),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        reset: () => this.fifoReset(),
+        peek: () => this.peek(),
+        size: () => this.fifoSize("fifo"),
+        toArray: () => this.fifoToArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
+    };
+
+    return this.fifo;
 }
 
 
@@ -55,9 +85,69 @@ function Stack() {
  * Stack FIFO Implementation
  *
  */
-function StackFifo() {
+function StackLowFootprint(method = "fifo") {
+    BaseLowFootprint.call(this);
 
-    Base.call(this);
+    this.superBase = this;
+    this.method = method;
+
+    // 
+    //   ==>   [1,2,3,4]  ==>
+    // 
+    this.fifo = {
+        enqueue: (item) => this.pushFront(item, ""),
+        dequeue: () => this.pop(""),
+
+        add: (item) => this.pushFront(item, ""),
+        insert: (item) => this.pushFront(item, ""),
+        push: (item) => this.pushFront(item, ""),
+
+        pop: () => this.pop(""),
+        remove: () => this.pop(""),
+
+        clear: () => this.clear(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear()
+    };
+
+    return this.fifo;
+}
+
+
+/**
+ * AsyncStack FIFO Implementation
+ *
+ */
+function AsyncStack() {
+
+    AsyncBase.call(this);
+
+    this.superBase = this;
+
+    //   ==>   [1,2,3,4]  ==>
+    this.fifo = {
+        add: this.pushFront,
+        push: this.pushFront,
+        insert: this.pushFront,
+
+        remove: this.pop,
+        pop: this.pop
+    };
+    return this.fifo;
+}
+
+
+/**
+ * AsyncStack FIFO Implementation
+ *
+ */
+function AsyncStackLowFootprint() {
+
+    AsyncBaseLowFootPrint.call(this);
 
     this.superBase = this;
 
@@ -71,171 +161,27 @@ function StackFifo() {
         pop: this.pop
     };
 
-
-}
-
-
-/**
- * Stack LIFO Implementation
- *
- */
-function StackLifo() {
-
-    Base.call(this);
-
-    this.superBase = this;
-
-    //   ==> [1,2,3,4]
-    //   <==
-    this.lifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.shift,
-        shift: this.shift
-    }
-
-}
-
-/** 
- * Stack LowFootprint LIFO / FIFO Implementation
- *
- */
-function StackLowFootprint() {
-
-    BaseLowFootprint.call(this);
-
-    this.superBase = this;
-
-    //   ==>   [1,2,3,4]  ==>
-    this.fifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.pop,
-        pop: this.pop
-    }
-
-    //   ==> [1,2,3,4]
-    //   <==
-    this.lifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.shift,
-        shift: this.shift
-    }
-}
-
-
-/**
- * Stack LowFootprint FIFO Implementation
- *
- */
-function StackLowFootprintFifo() {
-
-    BaseLowFootprint.call(this);
-
-    this.superBase = this;
-
-    //   ==>   [1,2,3,4]  ==>
-    this.fifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.pop,
-        pop: this.pop
-    }
-
     return this.fifo;
-}
-
-/**
- * Stack LowFootprint LIFO Implementation
- *
- */
-function StackLowFootprintLifo() {
-
-    BaseLowFootprint.call(this);
-
-    this.superBase = this;
-
-    //   ==> [1,2,3,4]
-    //   <==
-    this.lifo = {
-        add: this.pushFront,
-        push: this.pushFront,
-        insert: this.pushFront,
-
-        remove: this.shift,
-        shift: this.shift
-    }
-
-    return this.lifo;
-}
-
-/**
- * AsyncStack LIFO / FIFO Implementation
- *
- */
-function AsyncStack() {
-
-    AsyncBase.call(this);
-
-    this.superBase = this;
-}
-
-/**
- * AsyncStack LowFootprint LIFO / FIFO Implementation
- *
- */
-function AsyncStackLowFootprint() {
-
-    AsyncBaseLowFootPrint.call(this);
-
-    this.superBase = this;
 }
 
 
 Stack.prototype = Object.create(Base.prototype);
 Stack.prototype.constructor = Stack;
 
-StackFifo.prototype = Object.create(Base.prototype);
-StackFifo.prototype.constructor = StackFifo;
-
-StackLifo.prototype = Object.create(Base.prototype);
-StackLifo.prototype.constructor = StackLifo;
-
-StackLowFootprint.prototype = Object.create(BaseLowFootprint.prototype);
+StackLowFootprint.prototype = Object.create(StackLowFootprint.prototype);
 StackLowFootprint.prototype.constructor = StackLowFootprint;
-
-StackLowFootprintFifo.prototype = Object.create(BaseLowFootprint.prototype);
-StackLowFootprintFifo.prototype.constructor = StackLowFootprintFifo;
-
-StackLowFootprintLifo.prototype = Object.create(BaseLowFootprint.prototype);
-StackLowFootprintLifo.prototype.constructor = StackLowFootprintLifo;
 
 AsyncStack.prototype = Object.create(AsyncBase.prototype);
 AsyncStack.prototype.constructor = AsyncStack;
 
-AsyncStackLowFootprint.prototype = Object.create(AsyncBaseLowFootPrint.prototype);
+AsyncStackLowFootprint.prototype = Object.create(AsyncStackLowFootprint.prototype);
 AsyncStackLowFootprint.prototype.constructor = AsyncStackLowFootprint;
 
 
 module.exports.Stack = Stack;
-module.exports.StackFifo = StackFifo;
-module.exports.StackLifo = StackLifo;
-
 module.exports.StackLowFootprint = StackLowFootprint;
-module.exports.StackLowFootprintFifo = StackLowFootprintFifo;
-module.exports.StackLowFootprintLifo = StackLowFootprintLifo;
 
 module.exports.AsyncStack = AsyncStack;
 module.exports.AsyncStackLowFootprint = AsyncStackLowFootprint;
 
-
-module.exports.default = { Stack, StackFifo, StackLifo, StackLowFootprint, StackLowFootprintFifo, StackLowFootprintLifo, AsyncStack, AsyncStackLowFootprint }
+module.exports.default = { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint }

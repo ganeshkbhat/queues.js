@@ -17,11 +17,12 @@
 
 'use strict';
 
+
 /**
  *
  *
  */
-function Base(type = "bottom") {
+function Base(type = "bottom", method = "fifo") {
 
     /**
      * end - bottomended
@@ -29,6 +30,7 @@ function Base(type = "bottom") {
      * de - doubleended
      */
     this.type = type;
+    this.method = method;
 
     // 
     // Use cases - Front and End Queue:
@@ -150,6 +152,12 @@ function Base(type = "bottom") {
         return this.items[this.offset];
     }
 
+    this.seek = function peek(index = 0) {
+        this.offset = index;
+        if (this.items.length === 0) return undefined;
+        return this.items[this.offset];
+    }
+
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));
 
@@ -162,11 +170,12 @@ function Base(type = "bottom") {
     }
 }
 
+
 /**
  *
  *
  */
-function BaseLowFootprint(type = "end") {
+function BaseLowFootprint(type = "end", method = "fifo") {
 
     /**
      * end - bottomended
@@ -174,11 +183,13 @@ function BaseLowFootprint(type = "end") {
      * de - doubleended
      */
     this.type = type;
+    this.method = method;
 
     this.items = [];
 
     this.insertAtIndex = function insertAtIndex(item, index) {
-        this.items = [...this.items.splice(0, (index - 1)), item, ...this.items.splice(0, this.items.length - 1)];
+        // this.items = [...this.items.splice(0, (index - 1)), item, ...this.items.splice(0, this.items.length - 1)];
+        this.items = [...this.items.splice(0, index), item, ...this.items];
         return item;
     }
 
@@ -239,6 +250,10 @@ function BaseLowFootprint(type = "end") {
         return this.items[index];
     }
 
+    this.seek = function peek(index = 0) {
+
+    }
+
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));
 
@@ -253,11 +268,12 @@ function BaseLowFootprint(type = "end") {
 
 }
 
+
 /**
  *
  *
  */
-function AsyncBase(type = "end") {
+function AsyncBase(type = "end", method = "fifo") {
 
     /**
      * end - bottomended
@@ -265,6 +281,7 @@ function AsyncBase(type = "end") {
      * de - doubleended
      */
     this.type = type;
+    this.method = method;
 
     Base.call(this);
     this.superClass = this;
@@ -280,11 +297,12 @@ function AsyncBase(type = "end") {
 AsyncBase.prototype = Object.create(Base.prototype);
 AsyncBase.prototype.constructor = AsyncBase;
 
+
 /**
  *
  *
  */
-function AsyncBaseLowFootPrint(type = "end") {
+function AsyncBaseLowFootPrint(type = "end", method = "fifo") {
 
     /**
      * end - bottomended
@@ -292,6 +310,7 @@ function AsyncBaseLowFootPrint(type = "end") {
      * de - doubleended
      */
     this.type = type;
+    this.method = method;
 
     BaseLowFootprint.call(this);
     this.superClass = this;

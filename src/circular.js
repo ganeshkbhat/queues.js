@@ -17,6 +17,7 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
+
 /**
  *
  *
@@ -64,6 +65,7 @@ function Circular(queueSize = 10) {
 
 Circular.prototype = Object.create(Base.prototype);
 Circular.prototype.constructor = Circular;
+
 
 /**
  *

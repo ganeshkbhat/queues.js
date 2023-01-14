@@ -1,11 +1,11 @@
 /**
  * 
- * Package: scale.concurrency
+ * Package: queues.js
  * Author: Ganesh B
  * Description: 
- * Install: npm i scale.concurrency --save
- * Github: https://github.com/ganeshkbhat/scale.concurrency
- * npmjs Link: https://www.npmjs.com/package/scale.concurrency
+ * Install: npm i queues.js --save
+ * Github: https://github.com/ganeshkbhat/queues.js
+ * npmjs Link: https://www.npmjs.com/package/queues.js
  * File: .js
  * File Description: .js 
  * 

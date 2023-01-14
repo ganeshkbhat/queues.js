@@ -338,6 +338,7 @@ function QueueLowFootprintLifo() {
     return this.lifo;
 }
 
+
 /**
  *
  *
@@ -345,6 +346,7 @@ function QueueLowFootprintLifo() {
 function AsyncQueue() {
     AsyncBase.call(this);
 }
+
 
 /**
  *
