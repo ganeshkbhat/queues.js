@@ -27,10 +27,10 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 const { Semaphore } = require("./src/semaphore.js");
 const { WaitQueue } = require("./src/wait.js");
 
-module.exports.Base = Base;
-module.exports.BaseLowFootprint = BaseLowFootprint;
-module.exports.AsyncBase = AsyncBase;
-module.exports.AsyncBaseLowFootPrint = AsyncBaseLowFootPrint;
+// module.exports.Base = Base;
+// module.exports.BaseLowFootprint = BaseLowFootprint;
+// module.exports.AsyncBase = AsyncBase;
+// module.exports.AsyncBaseLowFootPrint = AsyncBaseLowFootPrint;
 
 module.exports.Queue = Queue;
 module.exports.QueueLowFootprint = QueueLowFootprint;
