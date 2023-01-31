@@ -20,10 +20,12 @@ const expect = require('chai').expect;
 var Queue = require("../index.js").BaseLowFootprint;
 
 
-describe('test-.mjs::queues.js: Test Suite for queues.js BaseLowFootprint Files', function () {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.base.lowfootprint.js BaseLowFootprint Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js BaseLowFootprint function. Tests for push and shift functions for TOP FIFO functions', function (done) {
-        var queue = new Queue("fifo");
+        let type = "front";
+        let method = "fifo";
+        var queue = new Queue(type, method);
         queue.push(1);
         queue.push(2);
         queue.push(3);
@@ -51,7 +53,9 @@ describe('test-.mjs::queues.js: Test Suite for queues.js BaseLowFootprint Files'
     });
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js BaseLowFootprint function. Tests for pushFront and shift for TOP LIFO functions', function (done) {
-        var queue = new Queue("lifo");
+        let type = "front";
+        let method = "lifo";
+        var queue = new Queue(type, method);
         queue.pushFront(1);
         queue.pushFront(2);
         queue.pushFront(3);
@@ -79,7 +83,9 @@ describe('test-.mjs::queues.js: Test Suite for queues.js BaseLowFootprint Files'
     });
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js BaseLowFootprint function. Tests for push and pop functions for BOTTOM FIFO functions', function (done) {
-        var queue = new Queue("fifo");
+        let type = "end";
+        let method = "fifo";
+        var queue = new Queue(type, method);
         queue.push(1);
         queue.push(2);
         queue.push(3);
@@ -107,7 +113,9 @@ describe('test-.mjs::queues.js: Test Suite for queues.js BaseLowFootprint Files'
     });
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js BaseLowFootprint function. Tests for push and pop functions for BOTTOM LIFO functions', function (done) {
-        var queue = new Queue("lifo");
+        let type = "end";
+        let method = "lifo";
+        var queue = new Queue(type, method);
         queue.push(1);
         queue.push(2);
         queue.push(3);

@@ -17,33 +17,36 @@
 
 const expect = require('chai').expect;
 var Queue = require("../index.js").QueueLowFootprintLifo;
-var lifo = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
 
-        it('test-.js::queues.js: [Test A] Test Suite for queues.js Bottom Queue LowFootPrint LIFO method', function (done) {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.lowfootprint.lifo.js Files', function () {
 
-            lifo.enqueue(1);
-            lifo.add(2);
-            lifo.insert(3);
-            lifo.push(4);
-            lifo.enqueue(5);
-            lifo.add(6);
-            lifo.insert(7);
-            lifo.push(8);
+    it('test-.js::queues.js: [Test A] Test Suite for queues.js Bottom Queue LowFootPrint LIFO method', function (done) {
+        let type = "end";
+        let method = "lifo";
+        
+        var lifo = new Queue(type, method);
+        lifo.enqueue(1);
+        lifo.add(2);
+        lifo.insert(3);
+        lifo.push(4);
+        lifo.enqueue(5);
+        lifo.add(6);
+        lifo.insert(7);
+        lifo.push(8);
 
-            expect(lifo.size()).to.equal(8);
-            expect(lifo.toArray().length).to.equal(8);
+        expect(lifo.size()).to.equal(8);
+        expect(lifo.toArray().length).to.equal(8);
 
-            expect(lifo.dequeue()).to.equal(8);
-            expect(lifo.pop()).to.equal(7);
-            expect(lifo.remove()).to.equal(6);
+        expect(lifo.dequeue()).to.equal(8);
+        expect(lifo.pop()).to.equal(7);
+        expect(lifo.remove()).to.equal(6);
 
-            expect(lifo.size()).to.equal(5);
-            expect(lifo.toArray().length).to.equal(5);
+        expect(lifo.size()).to.equal(5);
+        expect(lifo.toArray().length).to.equal(5);
 
-            done();
-        });
-
+        done();
     });
+
+});
 

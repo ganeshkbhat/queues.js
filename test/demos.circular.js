@@ -20,7 +20,7 @@
 // const { Circular } = require("../index");
 // let c = new Circular();
 
-// describe('test-.mjs::queues.js: Test Suite for queues.js Circular Files', function () {
+// describe('test-.mjs::queues.js: Test Suite for queues.js demos.circular.js Circular Files', function () {
 
 //     it('test-.js::queues.js: [Test A] Test Suite for queues.js Circular function. Test for Add and Pop functions', function (done) {
 

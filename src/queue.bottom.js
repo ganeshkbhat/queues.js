@@ -22,11 +22,12 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  *
  *
  */
-function Queue(method = "fifo") {
+function Queue(type = "end", method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.type = type;
     this.method = method;
 
     this.size = function size() {
@@ -111,11 +112,12 @@ function Queue(method = "fifo") {
  *
  *
  */
-function QueueLifo(method = "lifo") {
+function QueueLifo(type = "end", method = "lifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.type = type;
     this.method = method;
 
     this.size = function size() {
@@ -163,11 +165,12 @@ function QueueLifo(method = "lifo") {
  *
  *
  */
-function QueueFifo(method = "fifo") {
+function QueueFifo(type = "end", method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+    this.type = type;
     this.method = method;
 
     // 
@@ -202,10 +205,13 @@ function QueueFifo(method = "fifo") {
  *
  *
  */
-function QueueLowFootprint() {
+function QueueLowFootprint(type = "end", method = "fifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
+    this.method = method;
 
     // this.enqueue = function enqueue(item) { }
     // this.dequeue = function dequeue() { }
@@ -265,10 +271,13 @@ function QueueLowFootprint() {
  *
  *
  */
-function QueueLowFootprintFifo() {
+function QueueLowFootprintFifo(type = "end", method = "fifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
+    this.method = method;
 
     // console.log(this.items)
 
@@ -306,10 +315,13 @@ function QueueLowFootprintFifo() {
  *
  *
  */
-function QueueLowFootprintLifo() {
+function QueueLowFootprintLifo(type = "end", method = "lifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
+    this.method = method;
 
     // 
     //   [1,2,3,4]  <==

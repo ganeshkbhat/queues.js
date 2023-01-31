@@ -22,11 +22,13 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  * Stack FIFO Implementation
  *
  */
-function Stack(method = "fifo") {
+function Stack(type = "front", method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.size = function size() {
@@ -85,10 +87,12 @@ function Stack(method = "fifo") {
  * Stack FIFO Implementation
  *
  */
-function StackLowFootprint(method = "fifo") {
+function StackLowFootprint(type = "front", method = "fifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     // 
@@ -102,7 +106,7 @@ function StackLowFootprint(method = "fifo") {
         insert: (item) => this.pushFront(item, ""),
         push: (item) => this.pushFront(item, ""),
 
-        pop: () => this.pop(""),
+        shift: () => this.pop(""),
         remove: () => this.pop(""),
 
         clear: () => this.clear(),
@@ -122,20 +126,26 @@ function StackLowFootprint(method = "fifo") {
  * AsyncStack FIFO Implementation
  *
  */
-function AsyncStack() {
+function AsyncStack(type = "front", method = "fifo") {
 
     AsyncBase.call(this);
 
     this.superBase = this;
 
+    this.type = type;
+    this.method = method;
+
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {
+        enqueue: (item) => this.pushFront(item, ""),
+        dequeue: () => this.pop(""),
+
         add: this.pushFront,
         push: this.pushFront,
         insert: this.pushFront,
 
         remove: this.pop,
-        pop: this.pop
+        shift: this.pop
     };
     return this.fifo;
 }
@@ -145,14 +155,20 @@ function AsyncStack() {
  * AsyncStack FIFO Implementation
  *
  */
-function AsyncStackLowFootprint() {
+function AsyncStackLowFootprint(type = "front", method = "fifo") {
 
     AsyncBaseLowFootPrint.call(this);
 
     this.superBase = this;
 
+    this.type = type;
+    this.method = method;
+
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {
+        enqueue: (item) => this.pushFront(item, ""),
+        dequeue: () => this.pop(""),
+        
         add: this.pushFront,
         push: this.pushFront,
         insert: this.pushFront,

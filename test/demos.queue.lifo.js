@@ -17,12 +17,14 @@
 
 const expect = require('chai').expect;
 var Queue = require("../index.js").QueueLifo;
-var lifo = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.lifo.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js Bottom Queue LIFO method', function (done) {
-
+        let type = "end";
+        let method = "lifo";
+        var lifo = new Queue();
         lifo.enqueue(1);
         lifo.add(2);
         lifo.insert(3);

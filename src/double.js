@@ -21,20 +21,66 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
 /**
  *
  *
+ * type = "end" /\* front | end | de /*\/ 
+ * method = "fifo" /\* fifo | lifo /*\/
  */
-function DoubleEnded() {
-    Base.call(this);
+function DoubleEnded(type, method) {
+
+    this.type = type || "end";
+    this.method = method || "fifo";
+    this.endOffset = 0;
+
+    Base.call(this, [this.type, this.method]);
 
     this.superBase = this;
 
+    this.iFront = function insertFront(item) {
+        this.insertItem(item, this.offset, "");
+        this.offset = this.offset - 1;
+    }
+
+    this.iLast = function insertLast(item) {
+        this.insertItem(item, this.endOffset, "");
+        this.endOffset = this.endOffset + 1;
+    }
+
+    this.push = this.iLast;
+    this.pushFront = this.iFront;
+
+    this.shift = (counter = "+") => this.remove(counter, this.offset);
+    this.pop = (counter = "-") => this.remove(counter, this.endOffset);
+
+    this.dFront = function deleteFront() {
+        this.deleteFront("+");
+        this.offset = this.offset + 1;
+    }
+
+    this.dLast = function deleteLast() {
+        this.deleteLast("-", this.endOffset);
+        this.endOffset = this.endOffset - 1;
+    }
+
+    // 
+    // Double Ended Queue
+    // 
+    //   ==>   [1,2,3,4]  ==>
+    // 
+    //   <==   [1,2,3,4]  <==
+    // 
+    //   <==   [1,2,3,4]
+    //   ==>
+    //  
+    //   [1,2,3,4] <==
+    //             ==>
+    // 
     this.double = {
-        insertFront: this.insertFront,
-        insertLast: this.insertLast,
-        deleteFront: this.deleteFront,
-        deleteLast: this.deleteLast,
-        getFront: this.peek,
-        getRear: this.getRear,
-        
+        insertFront: (item) => this.iFront(item, "+"),
+        insertLast: (item) => this.iLast(item, ""),
+        deleteFront: () => this.dFront("-"),
+        deleteLast: () => this.dLast("+"),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear(),
+
         clear: () => this.clear(),
         reset: () => this.reset("fifo"),
         isEmpty: () => this.isEmpty(),
@@ -51,11 +97,13 @@ function DoubleEnded() {
  *
  *
  */
-function DoubleEndedLowFootprint() {
-    
+function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
+
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+    this.type = type;
+    this.method = method;
 
     // Double Ended Queue
     //
@@ -74,9 +122,16 @@ function DoubleEndedLowFootprint() {
         insertLast: this.insertLast,
         deleteFront: this.deleteFront,
         deleteLast: this.deleteLast,
-        getFront: this.peek,
+        getFront: this.getFront,
         getRear: this.getRear,
-        isEmpty: this.isEmpty
+        isEmpty: this.isEmpty,
+
+
+        clear: () => this.clear(),
+        reset: () => this.reset("fifo"),
+        peek: () => this.peek(),
+        size: () => this.size("fifo"),
+        toArray: () => this.toArray("fifo")
     }
 
     return this.double;
@@ -87,10 +142,42 @@ function DoubleEndedLowFootprint() {
  *
  *
  */
-function AsyncDoubleEnded() {
+function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
     AsyncBase.call(this);
 
     this.superBase = this;
+    this.type = type;
+    this.method = method;
+
+    // Double Ended Queue
+    //
+    //   ==>   [1,2,3,4]  ==>
+    // 
+    //   <==   [1,2,3,4]  <==
+    //
+    //   <==   [1,2,3,4]
+    //   ==>
+    // 
+    //   [1,2,3,4] <==
+    //             ==>
+    //
+    this.double = {
+        insertFront: this.insertFront,
+        insertLast: this.insertLast,
+        deleteFront: this.deleteFront,
+        deleteLast: this.deleteLast,
+        getFront: this.getFront,
+        getRear: this.getRear,
+
+        clear: () => this.clear(),
+        reset: () => this.reset(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray()
+    }
+
+    return this.double;
 }
 
 
@@ -98,10 +185,43 @@ function AsyncDoubleEnded() {
  *
  *
  */
-function AsyncDoubleEndedLowFootprint() {
+function AsyncDoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
     AsyncBaseLowFootPrint.call(this);
 
     this.superBase = this;
+    this.type = type;
+    this.method = method;
+
+
+    // Double Ended Queue
+    //
+    //   ==>   [1,2,3,4]  ==>
+    // 
+    //   <==   [1,2,3,4]  <==
+    //
+    //   <==   [1,2,3,4]
+    //   ==>
+    // 
+    //   [1,2,3,4] <==
+    //             ==>
+    //
+    this.double = {
+        insertFront: this.insertFront,
+        insertLast: this.insertLast,
+        deleteFront: this.deleteFront,
+        deleteLast: this.deleteLast,
+        getFront: this.getFront,
+        getRear: this.getRear,
+
+        clear: () => this.clear(),
+        reset: () => this.reset(),
+        isEmpty: () => this.isEmpty(),
+        peek: () => this.peek(),
+        size: () => this.size(),
+        toArray: () => this.toArray()
+    }
+
+    return this.double;
 }
 
 

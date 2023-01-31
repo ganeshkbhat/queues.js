@@ -17,12 +17,14 @@
 
 const expect = require('chai').expect;
 var Queue = require("../index.js").Stack;
-var stack = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.stack.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js Stack class/ function in main repo directory', function (done) {
-
+        let type = "front";
+        let method = "fifo";
+        var stack = new Queue();
         stack.add(1);
         stack.add(2);
         stack.push(3);
@@ -40,6 +42,13 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         expect(stack.remove()).to.equal(3);
 
         expect(stack.size()).to.equal(5);
+        expect(stack.toArray().length).to.equal(8);
+
+        expect(stack.dequeue()).to.equal(4);
+        expect(stack.shift()).to.equal(5);
+        expect(stack.remove()).to.equal(6);
+
+        expect(stack.size()).to.equal(2);
         expect(stack.toArray().length).to.equal(8);
 
         done();

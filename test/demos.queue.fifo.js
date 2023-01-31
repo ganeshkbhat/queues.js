@@ -18,11 +18,13 @@
 const expect = require('chai').expect;
 
 var Queue = require("../index.js").QueueFifo;
-var fifo = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.fifo.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js Bottom Queue FIFO method', function (done) {
+        let type = "end";
+        let method = "fifo";
+        var fifo = new Queue(type, method);
 
         fifo.enqueue(1);
         fifo.add(2);
@@ -41,6 +43,13 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         expect(fifo.remove()).to.equal(3);
 
         expect(fifo.size()).to.equal(5);
+        expect(fifo.toArray().length).to.equal(8);
+
+        expect(fifo.dequeue()).to.equal(4);
+        expect(fifo.shift()).to.equal(5);
+        expect(fifo.remove()).to.equal(6);
+
+        expect(fifo.size()).to.equal(2);
         expect(fifo.toArray().length).to.equal(8);
 
         done();

@@ -22,7 +22,7 @@
  *
  *
  */
-function Base(type = "bottom", method = "fifo") {
+function Base(type = "end", method = "fifo") {
 
     /**
      * end - bottomended
@@ -30,6 +30,11 @@ function Base(type = "bottom", method = "fifo") {
      * de - doubleended
      */
     this.type = type;
+
+    /**
+     * lifo - Last In First Out
+     * fifo - First In First Out
+     */
     this.method = method;
 
     // 
@@ -47,6 +52,7 @@ function Base(type = "bottom", method = "fifo") {
     //
 
     this.offset = 0;
+    this.endOffset = 0;
     this.items = [];
 
     // 
@@ -99,6 +105,22 @@ function Base(type = "bottom", method = "fifo") {
         return this.removeAtIndex(index, counter);
     }
 
+    this.counterCalculator = function counterCalculator() {
+        let counter = "";
+        if (this.type === "end" && this.method === "fifo") {
+            counter = "+";
+        } else if (this.type === "front" && this.method === "fifo") {
+            counter = "-";
+        } else if (this.type === "end" && this.method === "lifo") {
+            counter = "-";
+        } else if (this.type === "front" && this.method === "lifo") {
+            counter = "+";
+        }
+        return counter;
+    }
+
+    this.clear
+
     this.offsetCounter = function offsetCounter(counter = "") {
         if (counter === "+") {
             this.offset = this.offset + 1;
@@ -117,13 +139,12 @@ function Base(type = "bottom", method = "fifo") {
         return this.insertItem(item, 0, counter);
     }
 
-    this.pop = function pop(counter = "-") {
-        return this.removeAtIndex(this.offset, counter);
+    this.remove = function remove(counter, offset = this.offset) {
+        return this.removeAtIndex(offset, counter);
     }
 
-    this.shift = function shift(counter = "+") {
-        return this.removeAtIndex(this.offset, counter);
-    }
+    this.shift = (counter = "+", offset) => this.remove(counter, offset);
+    this.pop = (counter = "-", offset) => this.remove(counter, offset);
 
     this.insertFront = this.pushFront;
     this.insertLast = this.push;
@@ -137,10 +158,22 @@ function Base(type = "bottom", method = "fifo") {
 
     this.clear = function clear() {
         this.items = [];
+        this.reset();
     }
 
-    this.reset = function reset() {
-        this.offset = 0;
+    this.reset = function reset(type = this.type, method = this.method) {
+        if (type === "end" && method === "fifo") {
+            this.offset = 0;
+        } else if (type === "front" && method === "fifo") {
+            this.offset = this.items.length - 1;
+        } else if (type === "end" && method === "lifo") {
+            this.offset = this.items.length - 1;
+        } else if (type === "front" && method === "lifo") {
+            this.offset = 0;
+        } else if (type === "de") {
+            this.offset = 0;
+            this.endOffset = this.items.length - 1;
+        }
     }
 
     this.isEmpty = function isEmpty() {
@@ -148,21 +181,19 @@ function Base(type = "bottom", method = "fifo") {
     }
 
     this.peek = function peek() {
-        if (this.items.length === 0) return undefined;
         return this.items[this.offset];
     }
 
     this.seek = function peek(index = 0) {
         this.offset = index;
-        if (this.items.length === 0) return undefined;
         return this.items[this.offset];
     }
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));
 
-    this.size = function size() {
-        return this.items.length - this.offset;
+    this.size = function size(offset = this.offset) {
+        return (this.type === "front") ? this.offset + 1 : this.items.length - this.offset;
     }
 
     this.toArray = function toArray() {
@@ -245,14 +276,14 @@ function BaseLowFootprint(type = "end", method = "fifo") {
         this.items = [];
     }
 
+    this.reset = this.clear;
+
     this.peek = function peek(index = 0) {
         if (this.items.length === 0) return undefined;
         return this.items[index];
     }
 
-    this.seek = function peek(index = 0) {
-
-    }
+    this.seek = function peek(index = 0) { }
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));

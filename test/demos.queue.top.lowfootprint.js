@@ -17,9 +17,13 @@
 
 const expect = require('chai').expect;
 var Queue = require("../index.js").QueueTopLowFootprint;
+
+let type = "front";
+let method = "fifo";
+
 var queue = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.top.lowfootprint.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js for LIFO and FIFO QueueTopLowFootprint in main repo directory', function (done) {
 
@@ -38,7 +42,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         expect(queue.lifo.toArray().length).to.equal(8);
 
         expect(queue.lifo.dequeue()).to.equal(8);
-        expect(queue.lifo.shift()).to.equal(7);
+        expect(queue.lifo.pop()).to.equal(7);
         expect(queue.lifo.remove()).to.equal(6);
 
         expect(queue.lifo.size()).to.equal(5);
@@ -58,13 +62,13 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         queue.fifo.add(6);
         queue.fifo.insert(7);
         queue.fifo.push(8);
-        
+
 
         expect(queue.fifo.size()).to.equal(8);
         expect(queue.fifo.toArray().length).to.equal(8);
 
         expect(queue.fifo.dequeue()).to.equal(1);
-        expect(queue.fifo.pop()).to.equal(2);
+        expect(queue.fifo.shift()).to.equal(2);
         expect(queue.fifo.remove()).to.equal(3);
 
         expect(queue.fifo.size()).to.equal(5);
@@ -88,13 +92,13 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         queue.fifo.add(6);
         queue.fifo.insert(7);
         queue.fifo.push(8);
-        
+
 
         expect(queue.fifo.size()).to.equal(8);
         expect(queue.fifo.toArray().length).to.equal(8);
 
         expect(queue.fifo.dequeue()).to.equal(1);
-        expect(queue.fifo.pop()).to.equal(2);
+        expect(queue.fifo.shift()).to.equal(2);
         expect(queue.fifo.remove()).to.equal(3);
 
         expect(queue.fifo.size()).to.equal(5);
@@ -105,7 +109,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
 
         expect(queue.fifo.size()).to.equal(0);
         expect(queue.fifo.toArray().length).to.equal(0);
-        
+
         done();
     });
 
@@ -113,7 +117,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
 
         queue.lifo.clear();
         queue.lifo.reset();
-        
+
         // LIFO
 
         queue.lifo.enqueue(1);
@@ -129,7 +133,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         expect(queue.lifo.toArray().length).to.equal(8);
 
         expect(queue.lifo.dequeue()).to.equal(8);
-        expect(queue.lifo.shift()).to.equal(7);
+        expect(queue.lifo.pop()).to.equal(7);
         expect(queue.lifo.remove()).to.equal(6);
 
         expect(queue.lifo.size()).to.equal(5);

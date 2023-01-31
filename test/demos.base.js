@@ -20,10 +20,13 @@ const expect = require('chai').expect;
 var Queue = require("../index.js").Base;
 
 
-describe('demos.base.js::queues.js: Test Suite for queues.js Base function', function () {
+describe('demos.base.js::queues.js: Test Suite for queues.js demos.base.js Base function', function () {
 
     it('demos.base.js::queues.js: [Test A] Test Suite for queues.js Base function. Tests for Push and Shift', function (done) {
-        var queue = new Queue("bottom");
+        let type = "end";
+        let method = "fifo";
+
+        var queue = new Queue(type, method);
         queue.push(1);
         queue.push(2);
         queue.push(3);
@@ -40,13 +43,15 @@ describe('demos.base.js::queues.js: Test Suite for queues.js Base function', fun
         expect(queue.shift()).to.equal(2);
         expect(queue.shift()).to.equal(3);
 
-
         expect(queue.size()).to.equal(5);
         expect(queue.toArray().length).to.equal(8);
 
         expect(queue.shift()).to.equal(4);
         expect(queue.shift()).to.equal(5);
         expect(queue.shift()).to.equal(6);
+
+        expect(queue.size()).to.equal(2);
+        expect(queue.toArray().length).to.equal(8);
 
         queue.reset();
 
@@ -62,7 +67,9 @@ describe('demos.base.js::queues.js: Test Suite for queues.js Base function', fun
     });
 
     it('demos.base.js::queues.js: [Test B] Test Suite for queues.js Base function. Tests for PushFront and Pop', function (done) {
-        var queue = new Queue("front");
+        let type = "front";
+        let method = "fifo";
+        var queue = new Queue(type, method);
 
         queue.pushFront(1);
         queue.pushFront(2);
@@ -79,25 +86,25 @@ describe('demos.base.js::queues.js: Test Suite for queues.js Base function', fun
         queue.offsetCounter("+");
         queue.pushFront(8);
         queue.offsetCounter("+");
+        console.log(queue.offset);
 
-        // 
-        // Removing this test since the size() function is 
-        // () => { return (this.items.length - this.offset)}
-        // which should actually be () => { return (this.items.length - (this.offset+1))}
-        // expect(queue.size()).to.equal(8);
-        // 
+
+        expect(queue.size()).to.equal(8);
         expect(queue.toArray().length).to.equal(8);
 
         expect(queue.pop()).to.equal(1);
         expect(queue.pop()).to.equal(2);
         expect(queue.pop()).to.equal(3);
 
-        expect(queue.size() + 1).to.equal(5);
+        expect(queue.size()).to.equal(5);
         expect(queue.toArray().length).to.equal(8);
 
         expect(queue.pop()).to.equal(4);
         expect(queue.pop()).to.equal(5);
         expect(queue.pop()).to.equal(6);
+
+        expect(queue.size()).to.equal(2);
+        expect(queue.toArray().length).to.equal(8);
 
         queue.clear();
         queue.reset();

@@ -79,7 +79,6 @@ module.exports.Semaphore = Semaphore;
 module.exports.WaitQueue = WaitQueue;
 
 module.exports.default = {
-    Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
     AsyncQueue, AsyncQueueLowFootprint,
     QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo,

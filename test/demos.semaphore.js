@@ -19,7 +19,7 @@
 // var Queue = require("../index.js").Semaphore;
 // var semaphore = new Queue();
 
-// describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+// describe('test-.mjs::queues.js: Test Suite for queues.js demos.semaphore.js Files', function () {
 
 //     describe('test-.js::queues.js: [Test A] Test Suite for queues.js in main repo directory', function () {
 

@@ -19,7 +19,7 @@
 // var Queue = require("../index.js").DoubleEndedLowFootprint;
 // var queue = new Queue();
 
-// describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+// describe('test-.mjs::queues.js: Test Suite for queues.js demos.double.lowfootprint.js Files', function () {
 
 //     it('test-.js::queues.js: [Test A] Test Suite for queues.js Double LowFootPrint function queue', function (done) {
 

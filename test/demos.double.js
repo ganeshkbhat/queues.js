@@ -20,7 +20,7 @@
 // var Queue = require("../index.js").DoubleEnded;
 // var queue = new Queue();
 
-// describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+// describe('test-.mjs::queues.js: Test Suite for queues.js demos.double.js Files', function () {
 
 //     it('test-.js::queues.js: [Test A] Test Suite for queues.js in main repo directory', function (done) {
 

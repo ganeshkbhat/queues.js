@@ -22,11 +22,13 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  *
  *
  */
-function QueueTop(method = "fifo") {
+function QueueTop(type = "front", method = "fifo") {
 
     Base.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.size = function size() {
@@ -64,7 +66,7 @@ function QueueTop(method = "fifo") {
         push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
 
-        pop: () => this.pop("-"),
+        shift: () => this.pop("-"),
         remove: () => this.pop("-"),
 
         clear: () => this.clear(),
@@ -89,7 +91,7 @@ function QueueTop(method = "fifo") {
         push: (item) => this.pushFront(item),
         insert: (item) => this.pushFront(item),
 
-        shift: () => this.shift("+"),
+        pop: () => this.shift("+"),
         remove: () => this.shift("+"),
 
         clear: () => this.clear(),
@@ -110,9 +112,13 @@ function QueueTop(method = "fifo") {
  *
  *
  */
-function QueueTopLifo(method = "lifo") {
+function QueueTopLifo(type = "front", method = "lifo") {
 
     Base.call(this);
+
+    this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.size = function size() {
@@ -140,7 +146,7 @@ function QueueTopLifo(method = "lifo") {
         insert: (item) => this.pushFront(item),
         push: (item) => this.pushFront(item),
 
-        shift: () => this.shift("+"),
+        pop: () => this.shift("+"),
         remove: () => this.shift("+"),
 
         clear: () => this.clear(),
@@ -161,13 +167,17 @@ function QueueTopLifo(method = "lifo") {
  *
  *
  */
-function QueueTopFifo(method = "fifo") {
+function QueueTopFifo(type = "front", method = "fifo") {
 
-    Base.call(this);
+    Base.call(this, [type, method]);
+
+    this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.fifoSize = function size() {
-        return (this.offset === 0) ? this.items.length : this.offset + 1;
+        return (!!this.offset) ? this.offset : this.items.length;
     }
 
     this.fifoToArray = function toArray() {
@@ -175,7 +185,7 @@ function QueueTopFifo(method = "fifo") {
     }
 
     this.fifoReset = function reset() {
-        this.offset = this.items.length;
+        this.offset = this.items.length - 1;
     }
 
     // 
@@ -189,7 +199,7 @@ function QueueTopFifo(method = "fifo") {
         push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
 
-        pop: () => this.pop("-"),
+        shift: () => this.pop("-"),
         remove: () => this.pop("-"),
 
         clear: () => this.clear(),
@@ -211,10 +221,12 @@ function QueueTopFifo(method = "fifo") {
  *
  *
  */
-function QueueTopLowFootprint(method = "fifo") {
+function QueueTopLowFootprint(type = "front", method = "fifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.reset = function reset() {
@@ -232,7 +244,7 @@ function QueueTopLowFootprint(method = "fifo") {
         insert: (item) => this.pushFront(item, ""),
         push: (item) => this.pushFront(item, ""),
 
-        pop: () => this.pop(""),
+        shift: () => this.pop(""),
         remove: () => this.pop(""),
 
         clear: () => this.clear(),
@@ -257,7 +269,7 @@ function QueueTopLowFootprint(method = "fifo") {
         push: (item) => this.pushFront(item, ""),
         insert: (item) => this.pushFront(item, ""),
 
-        shift: () => this.shift(""),
+        pop: () => this.shift(""),
         remove: () => this.shift(""),
 
         clear: () => this.clear(),
@@ -278,10 +290,12 @@ function QueueTopLowFootprint(method = "fifo") {
  *
  *
  */
-function QueueTopLowFootprintFifo(method = "fifo") {
+function QueueTopLowFootprintFifo(type = "front", method = "fifo") {
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.reset = function reset() {
@@ -299,7 +313,7 @@ function QueueTopLowFootprintFifo(method = "fifo") {
         insert: (item) => this.pushFront(item, ""),
         push: (item) => this.pushFront(item, ""),
 
-        pop: () => this.pop(""),
+        shift: () => this.pop(""),
         remove: () => this.pop(""),
 
         clear: () => this.clear(),
@@ -320,11 +334,13 @@ function QueueTopLowFootprintFifo(method = "fifo") {
  *
  *
  */
-function QueueTopLowFootprintLifo(method = "lifo") {
+function QueueTopLowFootprintLifo(type = "front", method = "lifo") {
 
     BaseLowFootprint.call(this);
 
     this.superBase = this;
+
+    this.type = type;
     this.method = method;
 
     this.reset = function reset() {
@@ -343,7 +359,7 @@ function QueueTopLowFootprintLifo(method = "lifo") {
         push: (item) => this.pushFront(item, ""),
         insert: (item) => this.pushFront(item, ""),
 
-        shift: () => this.shift(""),
+        pop: () => this.shift(""),
         remove: () => this.shift(""),
 
         clear: () => this.clear(),

@@ -16,22 +16,92 @@
 'use strict';
 
 var Queue = require("../index.js").BaseLowFootprint;
-var queue = new Queue();
 
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
+var queue = new Queue("end", "fifo");
+
+queue.push(1);
+queue.push(2);
+queue.push(3);
 queue.push(4);
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
 queue.push(5);
-console.log(queue.size());
-console.log(queue.toArray());
+queue.push(6);
+queue.push(7);
+queue.push(8);
 
-console.log(queue.dequeue());
-console.log(queue.shift());
-console.log(queue.remove());
+console.log("end", "fifo", queue.size());
+console.log("end", "fifo", queue.toArray());
 
-console.log(queue.size());
-console.log(queue.toArray());
+console.log("end", "fifo", queue.shift());
+console.log("end", "fifo", queue.shift());
+console.log("end", "fifo", queue.shift());
+console.log("end", "fifo", queue.shift());
+
+console.log("end", "fifo", queue.size());
+console.log("end", "fifo", queue.toArray());
+
+queue = new Queue("end", "lifo");
+
+queue.push(1);
+queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
+queue.push(6);
+queue.push(7);
+queue.push(8);
+
+console.log("end", "lifo", queue.size());
+console.log("end", "lifo", queue.toArray());
+
+console.log("end", "lifo", queue.pop());
+console.log("end", "lifo", queue.pop());
+console.log("end", "lifo", queue.pop());
+console.log("end", "lifo", queue.pop());
+
+console.log("end", "lifo", queue.size());
+console.log("end", "lifo", queue.toArray());
+
+queue = new Queue("front", "fifo");
+
+queue.push(1);
+queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
+queue.push(6);
+queue.push(7);
+queue.push(8);
+
+console.log("front", "fifo", "queue.size()", queue.size());
+console.log("front", "fifo", "queue.toArray()", queue.toArray());
+
+console.log("front", "fifo", queue.pop());
+console.log("front", "fifo", queue.pop());
+console.log("front", "fifo", queue.pop());
+console.log("front", "fifo", queue.pop());
+
+console.log("front", "fifo", "queue.size()", queue.size());
+console.log("front", "fifo", "queue.toArray()", queue.toArray());
+
+queue = new Queue("front", "lifo");
+
+queue.push(1);
+queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
+queue.push(6);
+queue.push(7);
+queue.push(8);
+
+console.log("front", "lifo", "queue.size()",  queue.size());
+console.log("front", "lifo", "queue.toArray()", queue.toArray());
+
+console.log("front", "lifo", queue.shift());
+console.log("front", "lifo", queue.shift());
+console.log("front", "lifo", queue.shift());
+console.log("front", "lifo", queue.shift());
+
+console.log("front", "lifo", "queue.size()", queue.size());
+console.log("front", "lifo", "queue.toArray()", queue.toArray());
+

@@ -17,9 +17,13 @@
 
 const expect = require('chai').expect;
 var Queue = require("../index.js").QueueTopLowFootprintLifo;
+
+let type = "front";
+let method = "lifo";
+
 var lifo = new Queue();
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.top.lowfootprint.lifo.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js QueueTopLowFootprintLifo LIFO in main repo directory', function (done) {
 
@@ -36,7 +40,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
         expect(lifo.toArray().length).to.equal(8);
 
         expect(lifo.dequeue()).to.equal(8);
-        expect(lifo.shift()).to.equal(7);
+        expect(lifo.pop()).to.equal(7);
         expect(lifo.remove()).to.equal(6);
 
         expect(lifo.size()).to.equal(5);

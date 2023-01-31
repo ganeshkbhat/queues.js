@@ -32,7 +32,7 @@ const {
 
 
 
-describe('test-.mjs::queues.js: Test Suite for queues.js Files', function () {
+describe('test-.mjs::queues.js: Test Suite for queues.js demos.js Files', function () {
 
     it('test-.js::queues.js: [Test A] Test Suite for queues.js for all classes/ functions import statements in library', function (done) {
 
