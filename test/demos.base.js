@@ -17,7 +17,7 @@
 
 const expect = require('chai').expect;
 
-var Queue = require("../index.js").Base;
+var Queue = require("../src/base.js").Base;
 
 
 describe('demos.base.js::queues.js: Test Suite for queues.js demos.base.js Base function', function () {

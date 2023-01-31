@@ -30,7 +30,9 @@ const {
     Circular, AsyncCircular, Semaphore, WaitQueue
 } = require("../index.js");
 
-
+const {
+    Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint
+} = require("../src/base.js");
 
 describe('test-.mjs::queues.js: Test Suite for queues.js demos.js Files', function () {
 

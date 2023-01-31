@@ -17,7 +17,7 @@
 
 const expect = require('chai').expect;
 
-var Queue = require("../index.js").BaseLowFootprint;
+var Queue = require("../src/base.js").BaseLowFootprint;
 
 
 describe('test-.mjs::queues.js: Test Suite for queues.js demos.base.lowfootprint.js BaseLowFootprint Files', function () {
