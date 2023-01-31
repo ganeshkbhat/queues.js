@@ -18,7 +18,6 @@
 const expect = require('chai').expect;
 
 const {
-    Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
     AsyncQueue, AsyncQueueLowFootprint,
     QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo,
