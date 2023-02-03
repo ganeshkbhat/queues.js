@@ -86,9 +86,7 @@ describe('demos.base.js::queues.js: Test Suite for queues.js demos.base.js Base 
         queue.offsetCounter("+");
         queue.pushFront(8);
         queue.offsetCounter("+");
-        console.log(queue.offset);
-
-
+        
         expect(queue.size()).to.equal(8);
         expect(queue.toArray().length).to.equal(8);
 

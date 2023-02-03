@@ -25,6 +25,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.lowfootprin
         let type = "end";
         let method = "fifo";
         var fifo = new Queue(type, method);
+        
         fifo.enqueue(1);
         fifo.add(2);
         fifo.insert(3);

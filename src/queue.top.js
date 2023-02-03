@@ -31,20 +31,20 @@ function QueueTop(type = "front", method = "fifo") {
     this.type = type;
     this.method = method;
 
-    this.size = function size() {
+    this.lifosize = function size() {
         return this.items.length - this.offset;
     }
 
-    this.toArray = function toArray() {
+    this.lifotoArray = function toArray() {
         return [...this.items];
     }
 
-    this.reset = function reset() {
+    this.liforeset = function reset() {
         this.offset = 0;
     }
 
     this.fifoSize = function size() {
-        return (this.offset === 0) ? this.items.length : this.offset + 1;
+        return (!!this.offset) ? this.offset : this.items.length;
     }
 
     this.fifoToArray = function toArray() {
@@ -52,56 +52,58 @@ function QueueTop(type = "front", method = "fifo") {
     }
 
     this.fifoReset = function reset() {
-        this.offset = this.items.length;
+        this.offset = this.items.length - 1;
     }
 
     // 
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>   [4,3,2,1]  ==>
     // 
     this.fifo = {
         enqueue: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
-        dequeue: () => this.pop("-"),
+        dequeue: () => this.pop("-", this.offset - 1),
 
         add: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
 
-        shift: () => this.pop("-"),
-        remove: () => this.pop("-"),
+        shift: () => this.pop("-", this.offset - 1),
+        remove: () => this.pop("-", this.offset - 1),
 
         clear: () => this.clear(),
         isEmpty: () => this.isEmpty(),
         reset: () => this.fifoReset(),
         peek: () => this.peek(),
-        size: () => this.fifoSize("fifo"),
+        size: () => this.fifoSize(),
         toArray: () => this.fifoToArray(),
         getFront: () => this.getFront(),
-        getRear: () => this.getRear()
+        getRear: () => this.getRear(),
+        offset: () => this.getOffset()
     };
 
     // 
-    //    ==>  [1,2,3,4]
+    //    ==>  [4,3,2,1]
     //    <==        
     // 
     this.lifo = {
         enqueue: (item) => this.pushFront(item),
-        dequeue: () => this.shift("+"),
+        dequeue: () => this.shift("+", this.offset),
 
         add: (item) => this.pushFront(item),
-        push: (item) => this.pushFront(item),
         insert: (item) => this.pushFront(item),
+        push: (item) => this.pushFront(item),
 
-        pop: () => this.shift("+"),
-        remove: () => this.shift("+"),
+        pop: () => this.shift("+", this.offset),
+        remove: () => this.shift("+", this.offset),
 
         clear: () => this.clear(),
         isEmpty: () => this.isEmpty(),
-        reset: () => this.reset(),
         peek: () => this.peek(),
-        size: () => this.size("fifo"),
-        toArray: () => this.toArray(),
+        size: () => this.lifosize(),
+        reset: () => this.liforeset(),
+        toArray: () => this.lifotoArray(),
         getFront: () => this.getFront(),
-        getRear: () => this.getRear()
+        getRear: () => this.getRear(),
+        offset: () => this.getOffset()
     }
 
     return { lifo: this.lifo, fifo: this.fifo };
@@ -134,32 +136,31 @@ function QueueTopLifo(type = "front", method = "lifo") {
     }
 
     // 
-    //    ==>  [1,2,3,4]
+    //    ==>  [4,3,2,1]
     //    <==        
     // 
     this.lifo = {
-
         enqueue: (item) => this.pushFront(item),
-        dequeue: () => this.shift("+"),
+        dequeue: () => this.shift("+", this.offset),
 
         add: (item) => this.pushFront(item),
         insert: (item) => this.pushFront(item),
         push: (item) => this.pushFront(item),
 
-        pop: () => this.shift("+"),
-        remove: () => this.shift("+"),
+        pop: () => this.shift("+", this.offset),
+        remove: () => this.shift("+", this.offset),
 
         clear: () => this.clear(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size("lifo"),
+        size: () => this.size(),
         toArray: () => this.toArray(),
         getFront: () => this.getFront(),
-        getRear: () => this.getRear()
+        getRear: () => this.getRear(),
+        offset: () => this.getOffset()
     }
 
     return this.lifo;
-
 }
 
 
@@ -169,7 +170,7 @@ function QueueTopLifo(type = "front", method = "lifo") {
  */
 function QueueTopFifo(type = "front", method = "fifo") {
 
-    Base.call(this, [type, method]);
+    Base.call(this);
 
     this.superBase = this;
 
@@ -189,31 +190,31 @@ function QueueTopFifo(type = "front", method = "fifo") {
     }
 
     // 
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>   [4,3,2,1]  ==>
     // 
     this.fifo = {
         enqueue: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
-        dequeue: () => this.pop("-"),
+        dequeue: () => this.pop("-", this.offset - 1),
 
         add: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         push: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
         insert: (item) => { if (!!this.size()) { this.offsetCounter("+"); } return this.pushFront(item) },
 
-        shift: () => this.pop("-"),
-        remove: () => this.pop("-"),
+        shift: () => this.pop("-", this.offset - 1),
+        remove: () => this.pop("-", this.offset - 1),
 
         clear: () => this.clear(),
         isEmpty: () => this.isEmpty(),
         reset: () => this.fifoReset(),
         peek: () => this.peek(),
-        size: () => this.fifoSize("fifo"),
+        size: () => this.fifoSize(),
         toArray: () => this.fifoToArray(),
         getFront: () => this.getFront(),
-        getRear: () => this.getRear()
+        getRear: () => this.getRear(),
+        offset: () => this.getOffset()
     };
 
     return this.fifo;
-
 }
 
 
@@ -234,7 +235,7 @@ function QueueTopLowFootprint(type = "front", method = "fifo") {
     }
 
     // 
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>   [4,3,2,1]  ==>
     // 
     this.fifo = {
         enqueue: (item) => this.pushFront(item, ""),
@@ -258,7 +259,7 @@ function QueueTopLowFootprint(type = "front", method = "fifo") {
     };
 
     // 
-    //    ==>  [1,2,3,4]
+    //    ==>  [4,3,2,1]
     //    <==        
     // 
     this.lifo = {
@@ -303,7 +304,7 @@ function QueueTopLowFootprintFifo(type = "front", method = "fifo") {
     }
 
     // 
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>   [4,3,2,1]  ==>
     // 
     this.fifo = {
         enqueue: (item) => this.pushFront(item, ""),
@@ -348,7 +349,7 @@ function QueueTopLowFootprintLifo(type = "front", method = "lifo") {
     }
 
     // 
-    //    ==>  [1,2,3,4]
+    //    ==>  [4,3,2,1]
     //    <==        
     // 
     this.lifo = {

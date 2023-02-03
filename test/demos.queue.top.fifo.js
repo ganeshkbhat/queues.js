@@ -37,19 +37,19 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.top.fifo.js
         fifo.push(8);
 
         // fifo.reset();
-
+        
         expect(fifo.size()).to.equal(8);
         expect(fifo.toArray().length).to.equal(8);
 
         expect(fifo.dequeue()).to.equal(1);
-        expect(fifo.pop()).to.equal(2);
+        expect(fifo.shift()).to.equal(2);
         expect(fifo.remove()).to.equal(3);
 
         expect(fifo.size()).to.equal(5);
         expect(fifo.toArray().length).to.equal(8);
 
         expect(fifo.dequeue()).to.equal(4);
-        expect(fifo.pop()).to.equal(5);
+        expect(fifo.shift()).to.equal(5);
         expect(fifo.remove()).to.equal(6);
 
         expect(fifo.size()).to.equal(2);

@@ -180,8 +180,8 @@ function Base(type = "end", method = "fifo") {
         return this.size() === 0;
     }
 
-    this.peek = function peek() {
-        return this.items[this.offset];
+    this.peek = function peek(offset = this.offset) {
+        return this.items[offset];
     }
 
     this.seek = function peek(index = 0) {
@@ -193,11 +193,15 @@ function Base(type = "end", method = "fifo") {
     this.getRear = () => this.peek((this.items.length - 1));
 
     this.size = function size(offset = this.offset) {
-        return (this.type === "front") ? this.offset + 1 : this.items.length - this.offset;
+        return (this.type === "front") ? offset + 1 : this.items.length - offset;
     }
 
     this.toArray = function toArray() {
         return [...this.items];
+    }
+
+    this.getOffset = function getOffset() {
+        return this.offset;
     }
 }
 

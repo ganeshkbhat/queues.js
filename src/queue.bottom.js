@@ -30,8 +30,8 @@ function Queue(type = "end", method = "fifo") {
     this.type = type;
     this.method = method;
 
-    this.size = function size() {
-        return this.items.length - this.offset;
+    this.size = function size(offset = this.offset) {
+        return this.items.length - offset;
     }
 
     this.toArray = function toArray() {
@@ -42,8 +42,8 @@ function Queue(type = "end", method = "fifo") {
         this.offset = 0;
     }
 
-    this.lifoSize = function size() {
-        return (this.offset === 0) ? this.items.length : this.offset + 1;
+    this.lifoSize = function size(offset = this.offset) {
+        return (this.offset === 0) ? this.items.length : offset + 1;
     }
 
     this.lifoToArray = function toArray() {
@@ -69,11 +69,11 @@ function Queue(type = "end", method = "fifo") {
         remove: () => this.shift("+"),
 
         clear: () => this.clear(),
-        reset: () => this.reset("fifo"),
+        reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size("fifo"),
-        toArray: () => this.toArray("fifo"),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     };
@@ -97,7 +97,7 @@ function Queue(type = "end", method = "fifo") {
         reset: () => this.lifoReset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.lifoSize("lifo"),
+        size: () => this.lifoSize(),
         toArray: () => this.lifoToArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
@@ -151,7 +151,7 @@ function QueueLifo(type = "end", method = "lifo") {
         reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size("lifo"),
+        size: () => this.size(),
         toArray: () => this.toArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
@@ -188,11 +188,11 @@ function QueueFifo(type = "end", method = "fifo") {
         remove: () => this.shift("+"),
 
         clear: () => this.clear(),
-        reset: () => this.reset("fifo"),
+        reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
         peek: () => this.peek(),
-        size: () => this.size("fifo"),
-        toArray: () => this.toArray("fifo"),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear()
     };
