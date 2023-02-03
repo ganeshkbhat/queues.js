@@ -105,22 +105,6 @@ function Base(type = "end", method = "fifo") {
         return this.removeAtIndex(index, counter);
     }
 
-    this.counterCalculator = function counterCalculator() {
-        let counter = "";
-        if (this.type === "end" && this.method === "fifo") {
-            counter = "+";
-        } else if (this.type === "front" && this.method === "fifo") {
-            counter = "-";
-        } else if (this.type === "end" && this.method === "lifo") {
-            counter = "-";
-        } else if (this.type === "front" && this.method === "lifo") {
-            counter = "+";
-        }
-        return counter;
-    }
-
-    this.clear
-
     this.offsetCounter = function offsetCounter(counter = "") {
         if (counter === "+") {
             this.offset = this.offset + 1;
@@ -141,6 +125,20 @@ function Base(type = "end", method = "fifo") {
 
     this.remove = function remove(counter, offset = this.offset) {
         return this.removeAtIndex(offset, counter);
+    }
+
+    this.counterCalculator = function counterCalculator() {
+        let counter = "";
+        if (this.type === "end" && this.method === "fifo") {
+            counter = "+";
+        } else if (this.type === "front" && this.method === "fifo") {
+            counter = "-";
+        } else if (this.type === "end" && this.method === "lifo") {
+            counter = "-";
+        } else if (this.type === "front" && this.method === "lifo") {
+            counter = "+";
+        }
+        return counter;
     }
 
     this.shift = (counter = "+", offset) => this.remove(counter, offset);
@@ -207,6 +205,7 @@ function Base(type = "end", method = "fifo") {
     this.getEndOffset = function getEndOffset() {
         return this.endOffset;
     }
+    
 }
 
 
@@ -291,7 +290,7 @@ function BaseLowFootprint(type = "end", method = "fifo") {
         return this.items[index];
     }
 
-    this.seek = function peek(index = 0, offsetType = "offset") {}
+    this.seek = function peek(index = 0, offsetType = "offset") { }
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));

@@ -30,8 +30,7 @@ function DoubleEnded(type, method) {
     this.method = method || "fifo";
     this.endOffset = 0;
 
-    Base.call(this, [this.type, this.method]);
-
+    Base.call(this, type = this.type, method = this.method);
     this.superBase = this;
 
     this.insertFront = function insertFront(item) {
@@ -112,12 +111,12 @@ function DoubleEnded(type, method) {
  */
 function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
 
-    BaseLowFootprint.call(this, [type, method]);
-
-    this.superBase = this;
-
     this.type = type;
     this.method = method;
+
+    BaseLowFootprint.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     // Double Ended Queue
     //
@@ -157,11 +156,13 @@ function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "
  *
  */
 function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
-    AsyncBase.call(this);
-
-    this.superBase = this;
+    
     this.type = type;
     this.method = method;
+
+    AsyncBase.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     // Double Ended Queue
     //
@@ -200,11 +201,13 @@ function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /
  *
  */
 function AsyncDoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
-    AsyncBaseLowFootPrint.call(this);
-
-    this.superBase = this;
+    
     this.type = type;
     this.method = method;
+
+    AsyncBaseLowFootPrint.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
 
     // Double Ended Queue

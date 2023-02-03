@@ -24,13 +24,13 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  */
 function Stack(type = "front", method = "fifo") {
 
-    Base.call(this);
-
-    this.superBase = this;
-
     this.type = type;
     this.method = method;
 
+    Base.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
+    
     this.fifoSize = function size() {
         return (!!this.offset) ? this.offset : this.items.length;
     }
@@ -77,12 +77,13 @@ function Stack(type = "front", method = "fifo") {
  *
  */
 function StackLowFootprint(type = "front", method = "fifo") {
-    BaseLowFootprint.call(this);
-
-    this.superBase = this;
-
+    
     this.type = type;
     this.method = method;
+
+    BaseLowFootprint.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     // 
     //   ==>   [1,2,3,4]  ==>
@@ -116,13 +117,13 @@ function StackLowFootprint(type = "front", method = "fifo") {
  *
  */
 function AsyncStack(type = "front", method = "fifo") {
-
-    AsyncBase.call(this);
-
-    this.superBase = this;
-
+    
     this.type = type;
     this.method = method;
+
+    AsyncBase.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {
@@ -146,12 +147,12 @@ function AsyncStack(type = "front", method = "fifo") {
  */
 function AsyncStackLowFootprint(type = "front", method = "fifo") {
 
-    AsyncBaseLowFootPrint.call(this);
-
-    this.superBase = this;
-
     this.type = type;
     this.method = method;
+
+    AsyncBaseLowFootPrint.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {

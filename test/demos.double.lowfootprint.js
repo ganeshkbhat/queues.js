@@ -38,8 +38,6 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.double.lowfootpri
         expect(queue.size()).to.equal(8);
         expect(queue.toArray().length).to.equal(8);
 
-        console.log("TEST ", queue.size(), queue.toArray(), queue.getFront(), queue.getRear())
-
         expect(queue.deleteLast()).to.equal(1);
         expect(queue.deleteLast()).to.equal(2);
         expect(queue.deleteLast()).to.equal(3);

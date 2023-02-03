@@ -25,15 +25,17 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  */
 function Circular(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
 
-    Base.call(this, [this.type, this.method]);
-
-    this.superBase = this;
-
     this.type = type;
     this.method = method;
     this.queueSize = queueSize;
 
+    Base.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
+
     this.add = function add(item) {
+        if (this.items.length >= this.queueSize) throw new Error("[Circular Queue]: QueueSize higher");
+
         let counter = this.counterCalculator();
         if ((this.type === "front" && this.method === "fifo") && (this.type === "front" && this.method === "lifo")) {
             this.items.pushFront(item, counter);
@@ -88,38 +90,35 @@ function Circular(queueSize = 10, type = "end" /* front | end | de */, method = 
 
     if (this.type === "front") {
         this.circular = {
-            enqueue: this.add,
-            add: this.add,
-            pushFront: this.add,
+            ...this.circular,
+            enqueue: () => this.add(),
+            add: () => this.add(),
+            pushFront: () => this.add(),
 
-            remove: this.remove,
-            dequeue: this.remove,
-            pop: this.remove,
-
-            ...this.circular
+            remove: () => this.remove(),
+            dequeue: () => this.remove(),
+            pop: () => this.remove()
         }
     } else if (this.type === "end") {
         this.circular = {
-            enqueue: this.add,
-            add: this.add,
-            push: this.add,
+            ...this.circular,
+            enqueue: () => this.add(),
+            add: () => this.add(),
+            push: () => this.add(),
 
-            remove: this.remove,
-            dequeue: this.remove,
-            shift: this.remove,
-
-            ...this.circular
+            remove: () => this.remove(),
+            dequeue: () => this.remove(),
+            shift: () => this.remove()
         }
     } else if (this.type === "de") {
         this.circular = {
-            insertFront: this.insertFront,
-            insertLast: this.insertLast,
-            deleteFront: this.deleteFront,
-            deleteLast: this.deleteLast,
-            getFront: this.getFront,
-            getRear: this.getRear,
-
-            ...this.circular
+            ...this.circular,
+            insertFront: () => this.insertFront(),
+            insertLast: () => this.insertLast(),
+            deleteFront: () => this.deleteFront(),
+            deleteLast: () => this.deleteLast(),
+            getFront: () => this.getFront(),
+            getRear: () => this.getRear()
         }
     }
 
@@ -137,13 +136,13 @@ Circular.prototype.constructor = Circular;
  */
 function CircularLowFootprint(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
 
-    BaseLowFootprint.call(this, [this.type, this.method]);
-
-    this.superBase = this;
-
     this.type = type;
     this.method = method;
     this.queueSize = queueSize;
+
+    BaseLowFootprint.call(this, type = this.type, method = this.method);
+
+    this.superBase = this;
 
     this.add = function add(item) {
         let counter = "";
