@@ -97,7 +97,7 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.queue.top.js File
         done();
     });
 
-    it('test-.js::queues.js: [Test A] Test Suite for queues.js QueueTop tests for add and remove', function (done) {
+    it('test-.js::queues.js: [Test A] Test Suite for queues.js QueueTop fifo lifo tests for add and remove', function (done) {
 
         // FIFO
         let type = "front";
