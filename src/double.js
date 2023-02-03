@@ -34,31 +34,41 @@ function DoubleEnded(type, method) {
 
     this.superBase = this;
 
-    this.iFront = function insertFront(item) {
-        this.insertItem(item, this.offset, "");
-        this.offset = this.offset - 1;
-    }
-
-    this.iLast = function insertLast(item) {
-        this.insertItem(item, this.endOffset, "");
+    this.insertFront = function insertFront(item) {
+        this.items = [...this.items.splice(0, this.offset), item, ...this.items];
         this.endOffset = this.endOffset + 1;
+        return item;
     }
 
-    this.push = this.iLast;
-    this.pushFront = this.iFront;
-
-    this.shift = (counter = "+") => this.remove(counter, this.offset);
-    this.pop = (counter = "-") => this.remove(counter, this.endOffset);
-
-    this.dFront = function deleteFront() {
-        this.deleteFront("+");
-        this.offset = this.offset + 1;
+    this.insertLast = function insertLast(item) {
+        this.items = [...this.items.splice(0, this.endOffset), item, ...this.items];
+        this.offset = this.offset - 1;
+        return item;
     }
 
-    this.dLast = function deleteLast() {
-        this.deleteLast("-", this.endOffset);
+    this.deleteFront = function deleteFront(index = 0, counter = "") {
+        if (this.items.length === 0) return undefined;
+        let item = this.items[index];
         this.endOffset = this.endOffset - 1;
+        return item;
     }
+
+    this.deleteLast = function deleteLast(index = this.endOffset, counter = "") {
+        if (this.items.length === 0) return undefined;
+        let item = this.items[index - 1];
+        this.offset = this.offset + 1;
+        return item;
+    }
+
+    this.size = function size() {
+        return Math.abs(this.endOffset - this.offset);
+    }
+
+    this.shift = this.deleteFront;
+    this.pop = this.deleteLast;
+
+    this.push = this.insertLast;
+    this.pushFront = this.insertFront;
 
     // 
     // Double Ended Queue
@@ -74,19 +84,22 @@ function DoubleEnded(type, method) {
     //             ==>
     // 
     this.double = {
-        insertFront: (item) => this.iFront(item, "+"),
-        insertLast: (item) => this.iLast(item, ""),
-        deleteFront: () => this.dFront("-"),
-        deleteLast: () => this.dLast("+"),
+        insertFront: (item) => this.insertFront(item, "+"),
+        insertLast: (item) => this.insertLast(item, ""),
+        deleteFront: () => this.deleteFront(),
+        deleteLast: () => this.deleteLast(),
         getFront: () => this.getFront(),
         getRear: () => this.getRear(),
 
         clear: () => this.clear(),
-        reset: () => this.reset("fifo"),
+        reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
-        peek: () => this.peek(),
-        size: () => this.size("fifo"),
-        toArray: () => this.toArray("fifo")
+        peekFront: () => this.getFront(),
+        peekRear: () => this.getRear(),
+        size: () => this.size(),
+        toArray: () => this.toArray(),
+        getOffset: () => this.getOffset(),
+        getEndOffset: () => this.getEndOffset()
     }
 
     return this.double;

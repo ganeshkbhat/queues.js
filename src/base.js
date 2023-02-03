@@ -203,6 +203,10 @@ function Base(type = "end", method = "fifo") {
     this.getOffset = function getOffset() {
         return this.offset;
     }
+
+    this.getEndOffset = function getEndOffset() {
+        return this.endOffset;
+    }
 }
 
 
