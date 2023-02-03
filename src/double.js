@@ -132,20 +132,20 @@ function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "
     //             ==>
     //
     this.double = {
-        insertFront: (item) => this.superBase.insertFront(item),
-        insertLast: (item) => this.superBase.insertLast(item),
-        deleteFront: () => this.superBase.deleteFront(),
-        deleteLast: () => this.superBase.deleteLast(),
-        getFront: () => this.superBase.getFront(),
-        getRear: () => this.superBase.getRear(),
-        isEmpty: () => this.superBase.isEmpty(),
+        insertFront: (item) => this.insertFront(item),
+        insertLast: (item) => this.insertLast(item),
+        deleteFront: () => this.deleteFront(),
+        deleteLast: () => this.deleteLast(),
+        getFront: () => this.getFront(),
+        getRear: () => this.getRear(),
+        isEmpty: () => this.isEmpty(),
 
-        clear: () => this.superBase.clear(),
-        reset: () => this.superBase.reset(),
-        peekFront: () => this.superBase.getFront(),
-        peekRear: () => this.superBase.getRear(),
-        size: () => this.superBase.size(),
-        toArray: () => this.superBase.toArray()
+        clear: () => this.clear(),
+        reset: () => this.reset(),
+        peekFront: () => this.getFront(),
+        peekRear: () => this.getRear(),
+        size: () => this.size(),
+        toArray: () => this.toArray()
     }
 
     return this.double;
