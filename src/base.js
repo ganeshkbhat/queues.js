@@ -291,7 +291,7 @@ function BaseLowFootprint(type = "end", method = "fifo") {
         return this.items[index];
     }
 
-    this.seek = function peek(index = 0) { }
+    this.seek = function peek(index = 0, offsetType = "offset") {}
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));

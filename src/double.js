@@ -112,9 +112,10 @@ function DoubleEnded(type, method) {
  */
 function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
 
-    BaseLowFootprint.call(this);
+    BaseLowFootprint.call(this, [type, method]);
 
     this.superBase = this;
+
     this.type = type;
     this.method = method;
 
@@ -131,20 +132,20 @@ function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "
     //             ==>
     //
     this.double = {
-        insertFront: this.insertFront,
-        insertLast: this.insertLast,
-        deleteFront: this.deleteFront,
-        deleteLast: this.deleteLast,
-        getFront: this.getFront,
-        getRear: this.getRear,
-        isEmpty: this.isEmpty,
+        insertFront: (item) => this.superBase.insertFront(item),
+        insertLast: (item) => this.superBase.insertLast(item),
+        deleteFront: () => this.superBase.deleteFront(),
+        deleteLast: () => this.superBase.deleteLast(),
+        getFront: () => this.superBase.getFront(),
+        getRear: () => this.superBase.getRear(),
+        isEmpty: () => this.superBase.isEmpty(),
 
-
-        clear: () => this.clear(),
-        reset: () => this.reset("fifo"),
-        peek: () => this.peek(),
-        size: () => this.size("fifo"),
-        toArray: () => this.toArray("fifo")
+        clear: () => this.superBase.clear(),
+        reset: () => this.superBase.reset(),
+        peekFront: () => this.superBase.getFront(),
+        peekRear: () => this.superBase.getRear(),
+        size: () => this.superBase.size(),
+        toArray: () => this.superBase.toArray()
     }
 
     return this.double;
