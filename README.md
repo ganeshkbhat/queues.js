@@ -73,12 +73,8 @@ var lifo = new QueueLifo();
 
 ```
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("queues.js");
-
-// Base - Persistent Queue
-// BaseLowFootprint - Non-Persistent Queue
-// Queue - Persistent Queue
-// QueueLowFootprint - Non-Persistent Queue
+// Queue - Persistent Queue (stores the queue value at its place)
+// QueueLowFootprint - Non-Persistent Queue (releases the queue value from its place permanently - use value once)
 // All LowFootprint names classes / functions are non-persistent queues
 
 ```
