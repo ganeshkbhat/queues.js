@@ -40,8 +40,6 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.double.js Files',
         expect(queue.size()).to.equal(8);
         expect(queue.toArray().length).to.equal(8);
 
-        console.log("TEST ", queue.getOffset(), queue.getEndOffset(), queue.size(), queue.toArray(), queue.peekFront(), queue.peekRear())
-
         expect(queue.deleteLast()).to.equal(1);
         expect(queue.deleteFront()).to.equal(8);
 
