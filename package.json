@@ -1,6 +1,6 @@
 {
   "name": "queues.js",
-  "version": "0.0.22-beta",
+  "version": "0.0.22",
   "description": "npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation",
   "main": "index.js",
   "directories": {
