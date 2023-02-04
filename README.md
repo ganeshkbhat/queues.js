@@ -157,14 +157,13 @@ const { Circular, AsyncCircular } = require("queues.js");
 ### FIFO BOTTOM QUEUE IMPLEMENTATION
 
 ```
-var queues = require("queues.js");
-var QueueFifo = require("queues.js").QueueFifo;
-
 //
 // FIFO BOTTOM QUEUE IMPLEMENTATION
 // 
 //   <==   [1,2,3,4]  <==
 //
+var queues = require("queues.js");
+var QueueFifo = require("queues.js").QueueFifo;
 
 var fifo = new QueueFifo();
 fifo.enqueue(item);
@@ -180,9 +179,6 @@ fifo.remove();
 ### LIFO BOTTOM QUEUE IMPLEMENTATION
 
 ```
-var queues = require("queues.js");
-var QueueLifo = require("queues.js").QueueLifo;
-
 //
 // LIFO BOTTOM QUEUE IMPLEMENTATION
 // 
@@ -190,6 +186,8 @@ var QueueLifo = require("queues.js").QueueLifo;
 //   [1,2,3,4]  
 //              ==>
 //
+var queues = require("queues.js");
+var QueueLifo = require("queues.js").QueueLifo;
 
 var lifo = new QueueLifo();
 lifo.enqueue(item);
