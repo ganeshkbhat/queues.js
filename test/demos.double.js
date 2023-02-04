@@ -41,9 +41,21 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.double.js Files',
         expect(queue.toArray().length).to.equal(8);
 
         expect(queue.deleteLast()).to.equal(1);
-        expect(queue.deleteFront()).to.equal(8);
+        expect(queue.deleteLast()).to.equal(2);
 
         expect(queue.size()).to.equal(6);
+        expect(queue.toArray().length).to.equal(8);
+
+        expect(queue.deleteLast()).to.equal(3);
+        expect(queue.deleteLast()).to.equal(4);
+
+        expect(queue.size()).to.equal(4);
+        expect(queue.toArray().length).to.equal(8);
+
+        expect(queue.deleteFront()).to.equal(8);
+        expect(queue.deleteFront()).to.equal(7);
+
+        expect(queue.size()).to.equal(2);
         expect(queue.toArray().length).to.equal(8);
 
         done();

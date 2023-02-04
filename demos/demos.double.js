@@ -17,8 +17,10 @@
 
 var Queue = require("../index.js").DoubleEnded;
 
+let type = "front";
+let method = "fifo";
 
-var queue = new Queue();
+var queue = new Queue(type, method);
 queue.insertFront(1);
 queue.insertFront(2);
 queue.insertFront(3);
@@ -39,7 +41,7 @@ console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
 
-queue = new Queue();
+queue = new Queue(type, method);
 queue.insertFront(1);
 queue.insertFront(2);
 queue.insertFront(3);
@@ -60,7 +62,7 @@ console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
 
-queue = new Queue();
+queue = new Queue(type, method);
 queue.insertLast(1);
 queue.insertLast(2);
 queue.insertLast(3);
@@ -81,7 +83,7 @@ console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
 
-queue = new Queue();
+queue = new Queue(type, method);
 queue.insertLast(1);
 queue.insertLast(2);
 queue.insertLast(3);
