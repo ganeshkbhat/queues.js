@@ -15,7 +15,7 @@
 
 'use strict';
 
-const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
+const {
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
     AsyncQueue, AsyncQueueLowFootprint,
     QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo,
@@ -26,7 +26,7 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
     Circular, AsyncCircular, Semaphore, WaitQueue } = require("../index.js");
 
-console.log(Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint,
+console.log(
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
     AsyncQueue, AsyncQueueLowFootprint,
     QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo,

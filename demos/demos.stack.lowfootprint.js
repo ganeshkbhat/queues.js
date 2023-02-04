@@ -22,16 +22,16 @@ stack.enqueue(1);
 stack.add(2);
 stack.insert(3);
 stack.push(4);
-stack.enqueue(1);
-stack.add(2);
-stack.insert(3);
-stack.push(5);
-console.log(stack.size());
-console.log(stack.toArray());
+stack.enqueue(5);
+stack.add(6);
+stack.insert(7);
+stack.push(8);
+console.log("stack.size()", stack.size());
+console.log("stack.toArray()", stack.toArray());
 
 console.log(stack.dequeue());
 console.log(stack.shift());
 console.log(stack.remove());
 
-console.log(stack.size());
-console.log(stack.toArray());
+console.log("stack.size()", stack.size());
+console.log("stack.toArray()", stack.toArray());

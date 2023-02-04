@@ -16,87 +16,86 @@
 'use strict';
 
 var Queue = require("../index.js").DoubleEndedLowFootprint;
-var queue = new Queue("end", "lifo");
 
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(4);
-queue.enqueue(5);
-queue.add(6);
-queue.insert(7);
-queue.push(8);
-
-console.log("queue.size()", queue.size());
-console.log("queue.toArray()", queue.toArray());
-
-console.log(queue.dequeue());
-console.log(queue.pop());
-console.log(queue.remove());
+var queue = new Queue();
+queue.insertFront(1);
+queue.insertFront(2);
+queue.insertFront(3);
+queue.insertFront(4);
+queue.insertFront(5);
+queue.insertFront(6);
+queue.insertFront(7);
+queue.insertFront(8);
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-queue = new Queue("end", "fifo");
-
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(4);
-queue.enqueue(5);
-queue.add(6);
-queue.insert(7);
-queue.push(8);
+console.log(queue.deleteLast());
+console.log(queue.deleteLast());
+console.log(queue.deleteLast());
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-console.log(queue.dequeue());
-console.log(queue.shift());
-console.log(queue.remove());
+
+queue = new Queue();
+queue.insertFront(1);
+queue.insertFront(2);
+queue.insertFront(3);
+queue.insertFront(4);
+queue.insertFront(5);
+queue.insertFront(6);
+queue.insertFront(7);
+queue.insertFront(8);
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-queue = new Queue("front", "fifo");
-
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(4);
-queue.enqueue(5);
-queue.add(6);
-queue.insert(7);
-queue.push(8);
+console.log(queue.deleteFront());
+console.log(queue.deleteFront());
+console.log(queue.deleteFront());
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-console.log(queue.dequeue());
-console.log(queue.pop());
-console.log(queue.remove());
+
+queue = new Queue();
+queue.insertLast(1);
+queue.insertLast(2);
+queue.insertLast(3);
+queue.insertLast(4);
+queue.insertLast(5);
+queue.insertLast(6);
+queue.insertLast(7);
+queue.insertLast(8);
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-queue = new Queue("front", "lifo");
-
-queue.enqueue(1);
-queue.add(2);
-queue.insert(3);
-queue.push(4);
-queue.enqueue(5);
-queue.add(6);
-queue.insert(7);
-queue.push(8);
+console.log(queue.deleteLast());
+console.log(queue.deleteLast());
+console.log(queue.deleteLast());
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
-console.log(queue.dequeue());
-console.log(queue.shift());
-console.log(queue.remove());
+
+queue = new Queue();
+queue.insertLast(1);
+queue.insertLast(2);
+queue.insertLast(3);
+queue.insertLast(4);
+queue.insertLast(5);
+queue.insertLast(6);
+queue.insertLast(7);
+queue.insertLast(8);
 
 console.log("queue.size()", queue.size());
 console.log("queue.toArray()", queue.toArray());
 
+console.log(queue.deleteFront());
+console.log(queue.deleteFront());
+console.log(queue.deleteFront());
+
+console.log("queue.size()", queue.size());
+console.log("queue.toArray()", queue.toArray());

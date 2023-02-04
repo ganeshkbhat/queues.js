@@ -15,7 +15,7 @@
 
 'use strict';
 
-var Queue = require("../index.js").Base;
+var Queue = require("../src/base.js").Base;
 
 var queue = new Queue("end", "fifo");
 

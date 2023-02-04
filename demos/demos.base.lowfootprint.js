@@ -15,7 +15,7 @@
 
 'use strict';
 
-var Queue = require("../index.js").BaseLowFootprint;
+var Queue = require("../src/base.js").BaseLowFootprint;
 
 var queue = new Queue("end", "fifo");
 
