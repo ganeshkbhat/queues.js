@@ -35,7 +35,17 @@
     "end ended lifo",
     "end ended fifo",
     "double ended queue",
-    "semaphore queue"
+    "semaphore queue",
+    "top queue lifo",
+    "top queue fifo",
+    "bottom queue lifo",
+    "bottom queue fifo",
+    "double queue",
+    "stack",
+    "circular queue lifo",
+    "circular queue fifo",
+    "semaphore",
+    "wait queue"
   ],
   "author": "Ganesh Bhat",
   "license": "MIT",
