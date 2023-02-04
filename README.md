@@ -162,6 +162,7 @@ const { Circular, AsyncCircular } = require("queues.js");
 // 
 //   <==   [1,2,3,4]  <==
 //
+
 var queues = require("queues.js");
 var QueueFifo = require("queues.js").QueueFifo;
 
@@ -186,6 +187,7 @@ fifo.remove();
 //   [1,2,3,4]  
 //              ==>
 //
+
 var queues = require("queues.js");
 var QueueLifo = require("queues.js").QueueLifo;
 
