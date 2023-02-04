@@ -165,6 +165,7 @@ var QueueFifo = require("queues.js").QueueFifo;
 
 // FIFO BOTTOM QUEUE IMPLEMENTATION
 //   <==   [1,2,3,4]  <==
+
 var fifo = new QueueFifo();
 fifo.enqueue(item);
 fifo.add(item);
@@ -185,6 +186,7 @@ var QueueLifo = require("queues.js").QueueLifo;
 // LIFO BOTTOM QUEUE IMPLEMENTATION
 //   [1,2,3,4]  <==
 //              ==>
+
 var lifo = new QueueLifo();
 lifo.enqueue(item);
 lifo.add(item);
