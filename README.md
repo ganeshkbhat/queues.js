@@ -113,22 +113,20 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 ### Semaphore (includes all Base methods)
 In development
 
-<!-- 
 ```
 
 const { Semaphore } = require("queues.js");
 
-``` -->
+```
 
 ### WaitQueue (includes all Base methods)
 In development
 
-<!-- 
 ```
 
 const { WaitQueue } = require("queues.js");
 
-``` -->
+```
 
 
 ### Priority Queue (includes all Base methods)
@@ -146,12 +144,11 @@ const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint
 ### Circular Queue (includes all Base methods)
 In development
 
-<!-- 
 ```
 
 const { Circular, AsyncCircular } = require("queues.js");
 
-``` -->
+```
 
 
 ![Circular Queue](./docs/architecture/Circular%20Queues.jpg)
