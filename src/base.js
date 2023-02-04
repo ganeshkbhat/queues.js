@@ -22,7 +22,7 @@
  *
  *
  */
-function Base(type = "end", method = "fifo") {
+function Base(type = "end", method = "fifo", size = 100) {
 
     /**
      * end - bottomended
@@ -36,6 +36,11 @@ function Base(type = "end", method = "fifo") {
      * fifo - First In First Out
      */
     this.method = method;
+
+    /**
+     * Size of the queue
+     */
+    this.queueSize = size;
 
     // 
     // Use cases - Front and End Queue:
@@ -150,10 +155,6 @@ function Base(type = "end", method = "fifo") {
     this.deleteFront = this.shift;
     this.deleteLast = this.pop;
 
-    // this.enqueue = function enqueue(item) { }
-    // // dequeueOrWait
-    // this.dequeue = function dequeue() { }
-
     this.clear = function clear() {
         this.items = [];
         this.reset();
@@ -213,7 +214,7 @@ function Base(type = "end", method = "fifo") {
  *
  *
  */
-function BaseLowFootprint(type = "end", method = "fifo") {
+function BaseLowFootprint(type = "end", method = "fifo", size = 100) {
 
     /**
      * end - bottomended
@@ -222,6 +223,7 @@ function BaseLowFootprint(type = "end", method = "fifo") {
      */
     this.type = type;
     this.method = method;
+    this.queueSize = size;
 
     this.items = [];
 
@@ -300,7 +302,6 @@ function BaseLowFootprint(type = "end", method = "fifo") {
     }
 
     this.toArray = function toArray() {
-        // return this.items.slice(0, (this.items.length - 1));
         return [...this.items]
     }
 
@@ -311,7 +312,9 @@ function BaseLowFootprint(type = "end", method = "fifo") {
  *
  *
  */
-function AsyncBase(type = "end", method = "fifo") {
+function AsyncBase(type = "end", method = "fifo", size = 100) {
+    Base.call(this);
+    this.superClass = this;
 
     /**
      * end - bottomended
@@ -320,9 +323,7 @@ function AsyncBase(type = "end", method = "fifo") {
      */
     this.type = type;
     this.method = method;
-
-    Base.call(this);
-    this.superClass = this;
+    this.queueSize = size;
 
     this.awaiters = new Base();
 
@@ -340,7 +341,9 @@ AsyncBase.prototype.constructor = AsyncBase;
  *
  *
  */
-function AsyncBaseLowFootPrint(type = "end", method = "fifo") {
+function AsyncBaseLowFootPrint(type = "end", method = "fifo", size = 100) {
+    BaseLowFootprint.call(this);
+    this.superClass = this;
 
     /**
      * end - bottomended
@@ -349,9 +352,7 @@ function AsyncBaseLowFootPrint(type = "end", method = "fifo") {
      */
     this.type = type;
     this.method = method;
-
-    BaseLowFootprint.call(this);
-    this.superClass = this;
+    this.queueSize = size;
 
     this.awaiters = new BaseLowFootprint();
 

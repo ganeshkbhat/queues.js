@@ -24,14 +24,14 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  * type = "end" /\* front | end | de /*\/ 
  * method = "fifo" /\* fifo | lifo /*\/
  */
-function DoubleEnded(type, method) {
+function DoubleEnded(type, method, size = 100) {
+    Base.call(this, type = type, method = method, size = size);
+    this.superBase = this;
 
     this.type = type || "end";
     this.method = method || "fifo";
+    this.queueSize = size;
     this.endOffset = 0;
-
-    Base.call(this, type = this.type, method = this.method);
-    this.superBase = this;
 
     this.insertFront = function insertFront(item) {
         this.items = [...this.items.splice(0, this.offset), item, ...this.items];
@@ -109,14 +109,13 @@ function DoubleEnded(type, method) {
  *
  *
  */
-function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
-
+function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+    BaseLowFootprint.call(this, type = type, method = method, size = size);
+    this.superBase = this;
+    
     this.type = type;
     this.method = method;
-
-    BaseLowFootprint.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     // Double Ended Queue
     //
@@ -155,14 +154,13 @@ function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "
  *
  *
  */
-function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
+function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+    AsyncBase.call(this, type = type, method = method, size = size);
+    this.superBase = this;
     
     this.type = type;
     this.method = method;
-
-    AsyncBase.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     // Double Ended Queue
     //
@@ -200,15 +198,13 @@ function AsyncDoubleEnded(type = "end" /* front | end | de */, method = "fifo" /
  *
  *
  */
-function AsyncDoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
+function AsyncDoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+    AsyncBaseLowFootPrint.call(this, type = type, method = method, size = size);
+    this.superBase = this;
     
     this.type = type;
     this.method = method;
-
-    AsyncBaseLowFootPrint.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
-
+    this.queueSize = size;
 
     // Double Ended Queue
     //

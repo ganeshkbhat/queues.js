@@ -24,11 +24,12 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  *
  *
  */
-function Priority() {
+function Priority(size = 100) {
 
-    Base.call(this);
-
+    Base.call(this, size = size);
     this.superBase = this;
+
+    this.queueSize = size;
 
     // 
     // Use cases - Front and End Queue:
@@ -85,11 +86,12 @@ Priority.prototype.constructor = Priority;
  *
  *
  */
-function PriorityLowFootprint() {
+function PriorityLowFootprint(size = 100) {
 
-    BaseLowFootprint.call(this);
-
+    BaseLowFootprint.call(this, size = size);
     this.superBase = this;
+
+    this.queueSize = size;
 
     this.getPriorityItemIndex = function getPriorityItemIndex(item, type = "end", counter = "") {
         if (type === "end") {
@@ -126,11 +128,11 @@ PriorityLowFootprint.prototype.constructor = PriorityLowFootprint;
  *
  *
  */
-function AsyncPriority() {
-    AsyncBase.call(this);
-
+function AsyncPriority(size = 100) {
+    AsyncBase.call(this, size = size);
     this.superBase = this;
-    this.queueSize = queueSize;
+
+    this.queueSize = size;
 
 }
 
@@ -142,11 +144,11 @@ AsyncPriority.prototype.constructor = AsyncPriority;
  *
  *
  */
-function AsyncPriorityLowFootprint() {
-    AsyncBaseLowFootPrint.call(this);
-
+function AsyncPriorityLowFootprint(size = 100) {
+    AsyncBaseLowFootPrint.call(this, size = size);
     this.superBase = this;
-    this.queueSize = queueSize;
+
+    this.queueSize = size;
 
 }
 

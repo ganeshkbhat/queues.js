@@ -18,11 +18,14 @@
 
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
-function WaitQueue() {
+function WaitQueue(size = 100) {
 
     Base.call(this);
-
     this.superBase = this;
+    
+    this.type = type;
+    this.method = method;
+    this.queueSize = size;
 
     this.wait_queue = function wait_queue() { }
     

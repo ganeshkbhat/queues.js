@@ -22,15 +22,14 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  * Stack FIFO Implementation
  *
  */
-function Stack(type = "front", method = "fifo") {
-
-    this.type = type;
-    this.method = method;
-
-    Base.call(this, type = this.type, method = this.method);
-
+function Stack(type = "front", method = "fifo", size = 100) {
+    Base.call(this, type = type, method = method, size = size);
     this.superBase = this;
     
+    this.type = type;
+    this.method = method;
+    this.queueSize = size;
+
     this.fifoSize = function size() {
         return (!!this.offset) ? this.offset : this.items.length;
     }
@@ -76,14 +75,13 @@ function Stack(type = "front", method = "fifo") {
  * Stack FIFO Implementation
  *
  */
-function StackLowFootprint(type = "front", method = "fifo") {
+function StackLowFootprint(type = "front", method = "fifo", size = 100) {
+    BaseLowFootprint.call(this, type = type, method = method, size = size);
+    this.superBase = this;
     
     this.type = type;
     this.method = method;
-
-    BaseLowFootprint.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     // 
     //   ==>   [1,2,3,4]  ==>
@@ -116,14 +114,13 @@ function StackLowFootprint(type = "front", method = "fifo") {
  * AsyncStack FIFO Implementation
  *
  */
-function AsyncStack(type = "front", method = "fifo") {
+function AsyncStack(type = "front", method = "fifo", size = 100) {
+    AsyncBase.call(this, type = type, method = method, size = size);
+    this.superBase = this;
     
     this.type = type;
     this.method = method;
-
-    AsyncBase.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {
@@ -145,14 +142,13 @@ function AsyncStack(type = "front", method = "fifo") {
  * AsyncStack FIFO Implementation
  *
  */
-function AsyncStackLowFootprint(type = "front", method = "fifo") {
-
+function AsyncStackLowFootprint(type = "front", method = "fifo", size = 100) {
+    AsyncBaseLowFootPrint.call(this, type = type, method = method, size = size);
+    this.superBase = this;
+    
     this.type = type;
     this.method = method;
-
-    AsyncBaseLowFootPrint.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     //   ==>   [1,2,3,4]  ==>
     this.fifo = {

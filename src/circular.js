@@ -23,15 +23,13 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
  *
  * @param {number} [queueSize=10]
  */
-function Circular(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
-
+function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+    Base.call(this, type = type, method = method, size = size);
+    this.superBase = this;
+    
     this.type = type;
     this.method = method;
-    this.queueSize = queueSize;
-
-    Base.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     this.add = function add(item) {
         if (this.items.length >= this.queueSize) throw new Error("[Circular Queue]: QueueSize higher");
@@ -134,15 +132,14 @@ Circular.prototype.constructor = Circular;
  *
  * @param {number} [queueSize=10]
  */
-function CircularLowFootprint(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
+function CircularLowFootprint(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
 
+    BaseLowFootprint.call(this, type = type, method = method, size = size);
+    this.superBase = this;
+    
     this.type = type;
     this.method = method;
-    this.queueSize = queueSize;
-
-    BaseLowFootprint.call(this, type = this.type, method = this.method);
-
-    this.superBase = this;
+    this.queueSize = size;
 
     this.add = function add(item) {
         let counter = "";
@@ -243,15 +240,14 @@ CircularLowFootprint.prototype.constructor = CircularLowFootprint;
  *
  *
  */
-function AsyncCircular(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */) {
+function AsyncCircular(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
 
-    Circular.call(this);
-
+    Circular.call(this, type = type, method = method, size = size);
     this.superBase = this;
-
-    this.queueSize = queueSize;
+    
     this.type = type;
     this.method = method;
+    this.queueSize = size;
 
     this.awaiters = new AsyncBase();
 

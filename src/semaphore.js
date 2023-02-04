@@ -26,7 +26,6 @@ const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./
 function SemaphoreQueue(initialValue) {
 
   Base.call(this);
-
   this.superBase = this;
 
   this.count = initialValue;
