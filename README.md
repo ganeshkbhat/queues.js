@@ -10,45 +10,13 @@ Find the demos in the [demos folder](./demos)
 
 `Commonjs Code`
 
-
-### FIFO BOTTOM QUEUE IMPLEMENTATION
-
 ```
 var queues = require("queues.js");
-var QueueLifo = require("queues.js").QueueFifo;
-
-// FIFO BOTTOM QUEUE IMPLEMENTATION
-//   <==   [1,2,3,4]  <==
-var fifo = new QueueFifo();
-fifo.enqueue(item);
-fifo.add(item);
-fifo.insert(item);
-fifo.push(item);
-
-fifo.dequeue();
-fifo.shift();
-fifo.remove();
-```
-
-### LIFO BOTTOM QUEUE IMPLEMENTATION
-
-```
-var queues = require("queues.js");
+var Queue = require("queues.js").Queue;
 var QueueFifo = require("queues.js").QueueLifo;
-
-// LIFO BOTTOM QUEUE IMPLEMENTATION
-//   [1,2,3,4]  <==
-//              ==>
-var lifo = new QueueLifo();
-lifo.enqueue(item);
-lifo.add(item);
-lifo.push(item);
-lifo.insert(item);
-
-lifo.dequeue();
-lifo.pop();
-lifo.remove();
+var QueueLifo = require("queues.js").QueueFifo;
 ```
+
 
 ### ESM Code
 
@@ -182,6 +150,44 @@ const { Circular, AsyncCircular } = require("queues.js");
 ![Circular Queue](./docs/architecture/Circular%20Queues.jpg)
 
 
+### FIFO BOTTOM QUEUE IMPLEMENTATION
+
+```
+var queues = require("queues.js");
+var QueueFifo = require("queues.js").QueueFifo;
+
+// FIFO BOTTOM QUEUE IMPLEMENTATION
+//   <==   [1,2,3,4]  <==
+var fifo = new QueueFifo();
+fifo.enqueue(item);
+fifo.add(item);
+fifo.insert(item);
+fifo.push(item);
+
+fifo.dequeue();
+fifo.shift();
+fifo.remove();
+```
+
+### LIFO BOTTOM QUEUE IMPLEMENTATION
+
+```
+var queues = require("queues.js");
+var QueueLifo = require("queues.js").QueueLifo;
+
+// LIFO BOTTOM QUEUE IMPLEMENTATION
+//   [1,2,3,4]  <==
+//              ==>
+var lifo = new QueueLifo();
+lifo.enqueue(item);
+lifo.add(item);
+lifo.push(item);
+lifo.insert(item);
+
+lifo.dequeue();
+lifo.pop();
+lifo.remove();
+```
 
 ### Contributions
 
