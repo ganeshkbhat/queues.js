@@ -10,12 +10,12 @@ Find the demos in the [demos folder](./demos)
 
 `Commonjs Code`
 
+
+### FIFO BOTTOM QUEUE IMPLEMENTATION
+
 ```
-
 var queues = require("queues.js");
-var QueueFifo = require("queues.js").QueueLifo;
 var QueueLifo = require("queues.js").QueueFifo;
-
 
 // FIFO BOTTOM QUEUE IMPLEMENTATION
 //   <==   [1,2,3,4]  <==
@@ -28,7 +28,13 @@ fifo.push(item);
 fifo.dequeue();
 fifo.shift();
 fifo.remove();
+```
 
+### LIFO BOTTOM QUEUE IMPLEMENTATION
+
+```
+var queues = require("queues.js");
+var QueueFifo = require("queues.js").QueueLifo;
 
 // LIFO BOTTOM QUEUE IMPLEMENTATION
 //   [1,2,3,4]  <==
@@ -42,42 +48,32 @@ lifo.insert(item);
 lifo.dequeue();
 lifo.pop();
 lifo.remove();
-
-
 ```
 
-`ESM Code`
+### ESM Code
 
 ```
-
 import { default as queues, QueueLifo, QueueFifo } as "queues.js";
 var fifo = new QueueFifo();
 var lifo = new QueueLifo();
-
-
 ```
 
-`ESM or Commonjs Code`
+### ESM or Commonjs Code
 
 ```
-
 var queues = import("queues.js");
 var QueueFifo = import("queues.js").QueueLifo;
 var QueueLifo = import("queues.js").QueueFifo;
 var fifo = new QueueFifo();
 var lifo = new QueueLifo();
-
 ```
 
-### Base
+### Bases used
 
-```
+* Queue - Persistent Queue (stores the queue value at its place - uses a offset)
+* QueueLowFootprint - Non-Persistent Queue (releases the queue value from its place permanently - use value once)
+* All LowFootprint names classes / functions are non-persistent queues
 
-// Queue - Persistent Queue (stores the queue value at its place)
-// QueueLowFootprint - Non-Persistent Queue (releases the queue value from its place permanently - use value once)
-// All LowFootprint names classes / functions are non-persistent queues
-
-```
 
 
 ![Queue Types](./docs/architecture/Queue%20Types.jpg)
@@ -89,7 +85,6 @@ var lifo = new QueueLifo();
 ```
 
 const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo, AsyncQueue, AsyncQueueLowFootprint } = require("queues.js");
-
 
 ```
 
@@ -105,7 +100,6 @@ const { Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, Q
 ```
 
 const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowFootprintLifo, QueueTopLowFootprintFifo, AsyncQueueTop, AsyncQueueTopLowFootprint } = require("queues.js");
-
 
 ```
 
@@ -123,7 +117,6 @@ const { QueueTop, QueueTopLowFootprint, QueueTopLifo, QueueTopFifo, QueueTopLowF
 
 const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require("queues.js");
 
-
 ```
 
 
@@ -136,7 +129,6 @@ const { Stack, StackLowFootprint, AsyncStack, AsyncStackLowFootprint } = require
 
 const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint } = require("queues.js");
 
-
 ```
 
 
@@ -144,22 +136,24 @@ const { DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEnded
 
 
 ### Semaphore (includes all Base methods)
+In development
 
+<!-- 
 ```
 
 const { Semaphore } = require("queues.js");
 
-
-```
+``` -->
 
 ### WaitQueue (includes all Base methods)
+In development
 
+<!-- 
 ```
 
 const { WaitQueue } = require("queues.js");
 
-
-```
+``` -->
 
 
 ### Priority Queue (includes all Base methods)
@@ -168,7 +162,6 @@ const { WaitQueue } = require("queues.js");
 
 const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint } = require("queues.js");
 
-
 ```
 
 
@@ -176,13 +169,14 @@ const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint
 
 
 ### Circular Queue (includes all Base methods)
+In development
 
+<!-- 
 ```
 
 const { Circular, AsyncCircular } = require("queues.js");
 
-
-```
+``` -->
 
 
 ![Circular Queue](./docs/architecture/Circular%20Queues.jpg)
