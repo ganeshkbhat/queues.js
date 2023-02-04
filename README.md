@@ -15,6 +15,10 @@ var queues = require("queues.js");
 var Queue = require("queues.js").Queue;
 var QueueFifo = require("queues.js").QueueLifo;
 var QueueLifo = require("queues.js").QueueFifo;
+
+var queue = new Queue();
+var fifo = new QueueFifo();
+var lifo = new QueueLifo();
 ```
 
 
