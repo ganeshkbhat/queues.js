@@ -17,7 +17,10 @@
 
 const { Circular } = require("../index");
 
-let c = new Circular();
+let type = "front";
+let method = "fifo";
+
+let c = new Circular(type, method, 20);
 
 // c.add([1, 2, 3, 4, 5, 6]);
 c.add(1);
@@ -27,26 +30,26 @@ c.add(4);
 c.add(5);
 c.add(6);
 
-console.log(c.items);
+console.log(c.toArray());
 
 c.add(1);
 c.add(32);
 
-console.log(c.items);
+console.log(c.toArray());
 
-c.pop();
-c.pop();
-c.pop();
+console.log(c.pop());
+console.log(c.pop());
+console.log(c.pop());
 
-console.log(c.items);
+console.log(c.toArray());
 
-c.pop();
-c.pop();
+console.log(c.pop());
+console.log(c.pop());
 
-console.log(c.items);
+console.log(c.toArray());
 
-c.pop();
-c.pop();
+console.log(c.pop());
+console.log(c.pop());
 
-console.log(c.items);
+console.log(c.toArray());
 
