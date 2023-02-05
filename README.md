@@ -204,9 +204,7 @@ lifo.remove();
 
 ### TODO
 
-[.todo](./.todo)
-
-In Development: Asynchronous Implementation, Semphores, Wait Queues
+[.todo](./.todo) In Development: Asynchronous Implementation, Semphores, Wait Queues
 
 
 ### Contributions
