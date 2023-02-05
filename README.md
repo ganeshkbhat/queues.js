@@ -202,6 +202,13 @@ lifo.pop();
 lifo.remove();
 ```
 
+### TODO
+
+[.todo](./.todo)
+
+In Development
+
+
 ### Contributions
 
 Contributions, Feature Improvements, Bugs, and Issues are invited. [raising an issue](https://github.com/ganeshkbhat/queues.js/issues)
