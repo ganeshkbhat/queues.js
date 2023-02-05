@@ -206,7 +206,7 @@ lifo.remove();
 
 [.todo](./.todo)
 
-In Development
+In Development: Asynchronous Implementation, Semphores, Wait Queues
 
 
 ### Contributions
