@@ -14,8 +14,8 @@ Find the demos in the [demos folder](./demos)
 var queues = require("queues.js");
 
 var Queue = require("queues.js").Queue;
-var QueueFifo = require("queues.js").QueueLifo;
-var QueueLifo = require("queues.js").QueueFifo;
+var QueueFifo = require("queues.js").QueueFifo;
+var QueueLifo = require("queues.js").QueueLifo;
 
 var queue = new Queue();
 var fifo = new QueueFifo();
@@ -36,8 +36,8 @@ var lifo = new QueueLifo();
 
 ```
 var queues = import("queues.js");
-var QueueFifo = import("queues.js").QueueLifo;
-var QueueLifo = import("queues.js").QueueFifo;
+var QueueFifo = import("queues.js").QueueFifo;
+var QueueLifo = import("queues.js").QueueLifo;
 
 var fifo = new QueueFifo();
 var lifo = new QueueLifo();
