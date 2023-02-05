@@ -51,12 +51,16 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
         let item;
         if ((this.type === "front" && this.method === "fifo") && (this.type === "end" && this.method === "lifo")) {
             item = this.pop();
+            this.pushFront(item);
         } else if ((this.type === "front" && this.method === "lifo") && (this.type === "end" && this.method === "fifo")) {
             item = this.shift();
+            this.push(item);
         } else if (this.type === "de" && this.method === "end") {
             item = this.shift();
+            this.push(item);
         } else if (this.type === "de" && this.method === "front") {
             item = this.pop();
+            this.pushFront(item);
         }
         return item;
     }
@@ -67,7 +71,7 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
         }
 
         const item = this.superBase.pop(counter);
-        // this.pushFront(item);
+        this.pushFront(item);
         return item;
     }
 

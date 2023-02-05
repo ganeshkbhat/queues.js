@@ -1,7 +1,7 @@
 {
   "name": "queues.js",
   "version": "0.0.22",
-  "description": "node package for top bottom plus lifo/ fifo queues, stack, priority queues, double ended queues, circular queues, wait queues, and semaphore queues implementation",
+  "description": "node package for top and bottom plus lifo/ fifo queues, stack, priority queues, double ended queues, circular queues, wait queues, and semaphore queues implementation",
   "main": "index.js",
   "directories": {
     "test": "test"

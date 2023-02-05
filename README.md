@@ -1,6 +1,6 @@
 # queues.js
 
-node package for top bottom plus lifo/ fifo queues, stack, priority queues, double ended queues, circular queues, wait queues, and semaphore queues implementation
+node package for top and bottom plus lifo/ fifo queues, stack, priority queues, double ended queues, circular queues (TODO), wait queues (TODO), and semaphore queues (TODO) implementation
 
 Find the demos in the [demos folder](./demos)
 
