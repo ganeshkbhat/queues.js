@@ -33,29 +33,29 @@ function DoubleEnded(type, method, size = 100) {
     this.queueSize = size;
     this.endOffset = 0;
 
-    this.insertFront = function insertFront(item) {
+    this.insertFront = function insertFront(item, counter = "") {
         this.items = [...this.items.splice(0, this.offset), item, ...this.items];
         this.endOffset = this.endOffset + 1;
         return item;
     }
 
-    this.insertLast = function insertLast(item) {
+    this.insertLast = function insertLast(item, counter = "") {
         this.items = [...this.items.splice(0, this.endOffset), item, ...this.items];
-        this.offset = this.offset - 1;
+        this.endOffset = this.endOffset + 1;
         return item;
     }
 
-    this.deleteFront = function deleteFront(index = 0, counter = "") {
+    this.deleteFront = function deleteFront(index = this.offset, counter = "") {
         if (this.items.length === 0) return undefined;
         let item = this.items[index];
-        this.endOffset = this.endOffset - 1;
+        this.offset = this.offset + 1;
         return item;
     }
 
     this.deleteLast = function deleteLast(index = this.endOffset, counter = "") {
         if (this.items.length === 0) return undefined;
         let item = this.items[index - 1];
-        this.offset = this.offset + 1;
+        this.endOffset = this.endOffset - 1;
         return item;
     }
 
@@ -72,19 +72,21 @@ function DoubleEnded(type, method, size = 100) {
     // 
     // Double Ended Queue
     // 
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>    [1,2,3,4]    ==>
     // 
-    //   <==   [1,2,3,4]  <==
+    //   <==    [1,2,3,4]    <==
     // 
-    //   <==   [1,2,3,4]
+    //   <==
+    //          [1,2,3,4]
     //   ==>
-    //  
-    //   [1,2,3,4] <==
-    //             ==>
+    // 
+    //                      <==
+    //          [1,2,3,4] 
+    //                      ==>
     // 
     this.double = {
-        insertFront: (item) => this.insertFront(item, "+"),
-        insertLast: (item) => this.insertLast(item, ""),
+        insertFront: (item) => this.insertFront(item),
+        insertLast: (item) => this.insertLast(item),
         deleteFront: () => this.deleteFront(),
         deleteLast: () => this.deleteLast(),
         getFront: () => this.getFront(),
@@ -117,17 +119,20 @@ function DoubleEndedLowFootprint(type = "end" /* front | end | de */, method = "
     this.method = method;
     this.queueSize = size;
 
+    // 
     // Double Ended Queue
     //
-    //   ==>   [1,2,3,4]  ==>
+    //   ==>    [1,2,3,4]   ==>
     // 
-    //   <==   [1,2,3,4]  <==
-    //
-    //   <==   [1,2,3,4]
+    //   <==    [1,2,3,4]   <==
+    //      
+    //   <==
+    //          [1,2,3,4]
     //   ==>
     // 
-    //   [1,2,3,4] <==
-    //             ==>
+    //                      <==
+    //          [1,2,3,4] 
+    //                      ==>
     //
     this.double = {
         insertFront: (item) => this.insertFront(item),
