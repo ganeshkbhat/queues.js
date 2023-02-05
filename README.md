@@ -1,6 +1,6 @@
 # queues.js
 
-npm module for start ended lifo/ fifo, normal js ended lifo/ fifo, double ended queue and semaphore queue implementation
+node package for top bottom plus lifo/ fifo queues, stack, priority queues, double ended queues, circular queues, wait queues, and semaphore queues implementation
 
 Find the demos in the [demos folder](./demos)
 
