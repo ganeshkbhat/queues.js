@@ -142,7 +142,7 @@ const { Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint
 
 
 ### Circular Queue (includes all Base methods)
-In development
+In development - Currently Testing 
 
 ```
 
