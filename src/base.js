@@ -183,13 +183,21 @@ function Base(type = "end", method = "fifo", size = 100) {
         return this.items[offset];
     }
 
-    this.seek = function peek(index = 0) {
+    this.seek = function peek(index = this.offset, offsetType = "offset" /* offset, endOffset */) {
+        if (offsetType === "endOffset") {
+            this.endOffset = index;
+            return this.items[this.endOffset];
+        }
         this.offset = index;
         return this.items[this.offset];
     }
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));
+
+    this.resetSize = function resetSize(size) {
+        this.queueSize = size;
+    }
 
     this.size = function size(offset = this.offset) {
         return (this.type === "front") ? offset + 1 : this.items.length - offset;
@@ -266,12 +274,15 @@ function BaseLowFootprint(type = "end", method = "fifo", size = 100) {
         return this.items.shift();
     }
 
+    this.resetSize = function resetSize(size) {
+        this.queueSize = size;
+    }
+
     this.insertFront = this.pushFront;
     this.insertLast = this.push;
 
     this.deleteFront = this.shift;
     this.deleteLast = this.pop;
-
 
     this.enqueue = function enqueue(item) { }
     // dequeueOrWait
@@ -292,7 +303,9 @@ function BaseLowFootprint(type = "end", method = "fifo", size = 100) {
         return this.items[index];
     }
 
-    this.seek = function peek(index = 0, offsetType = "offset") { }
+    // this.seek = function peek(index = 0, offsetType = "offset") {
+    //     if ()
+    // }
 
     this.getFront = () => this.peek();
     this.getRear = () => this.peek((this.items.length - 1));

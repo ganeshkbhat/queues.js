@@ -47,41 +47,39 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
         return item;
     }
 
-    this.remove = function remove() {
-        let item;
-        if ((this.type === "front" && this.method === "fifo") && (this.type === "end" && this.method === "lifo")) {
-            item = this.pop();
-            this.pushFront(item);
-        } else if ((this.type === "front" && this.method === "lifo") && (this.type === "end" && this.method === "fifo")) {
-            item = this.shift();
-            this.push(item);
-        } else if (this.type === "de" && this.method === "end") {
-            item = this.shift();
-            this.push(item);
-        } else if (this.type === "de" && this.method === "front") {
-            item = this.pop();
-            this.pushFront(item);
-        }
-        return item;
-    }
-
-    this.pop = function pop(counter = "-") {
+    this.pop = function pop(counter = "+") {
         if (!!this.peek()) {
             let tmpCounter = this.counterCalculator();
         }
-
-        const item = this.superBase.pop(counter);
+        const item = this.pop(counter);
         this.pushFront(item);
         return item;
     }
 
-    this.shift = function shift(counter = "+") {
+    this.shift = function shift(counter = "-") {
         const item = this.superBase.shift(counter);
         this.push(item);
         return item;
     }
 
+    this.remove = function remove() {
+        let item;
+        if ((this.type === "front" && this.method === "fifo") && (this.type === "end" && this.method === "lifo")) {
+            item = this.pop();
+        } else if ((this.type === "front" && this.method === "lifo") && (this.type === "end" && this.method === "fifo")) {
+            item = this.shift();
+        } else if (this.type === "de" && this.method === "end") {
+            item = this.shift();
+        } else if (this.type === "de" && this.method === "front") {
+            item = this.pop();
+        }
+        return item;
+    }
+
+    
+
     this.circular = {
+        getOffset: () => this.getOffset(),
         clear: () => this.clear(),
         reset: () => this.reset(),
         isEmpty: () => this.isEmpty(),
@@ -93,9 +91,9 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
     if (this.type === "front") {
         this.circular = {
             ...this.circular,
-            enqueue: () => this.add(),
-            add: () => this.add(),
-            pushFront: () => this.add(),
+            enqueue: (item) => this.add(item),
+            add: (item) => this.add(item),
+            pushFront: (item) => this.add(item),
 
             remove: () => this.remove(),
             dequeue: () => this.remove(),
@@ -104,9 +102,9 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
     } else if (this.type === "end") {
         this.circular = {
             ...this.circular,
-            enqueue: () => this.add(),
-            add: () => this.add(),
-            push: () => this.add(),
+            enqueue: (item) => this.add(item),
+            add: (item) => this.add(item),
+            push: (item) => this.add(item),
 
             remove: () => this.remove(),
             dequeue: () => this.remove(),
@@ -115,8 +113,8 @@ function Circular(type = "end" /* front | end | de */, method = "fifo" /* fifo |
     } else if (this.type === "de") {
         this.circular = {
             ...this.circular,
-            insertFront: () => this.insertFront(),
-            insertLast: () => this.insertLast(),
+            insertFront: (item) => this.insertFront(item),
+            insertLast: (item) => this.insertLast(item),
             deleteFront: () => this.deleteFront(),
             deleteLast: () => this.deleteLast(),
             getFront: () => this.getFront(),
@@ -136,7 +134,7 @@ Circular.prototype.constructor = Circular;
  *
  * @param {number} [queueSize=10]
  */
-function CircularLowFootprint(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+function CircularLowFootprint(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
 
     BaseLowFootprint.call(this, type = type, method = method, size = size);
     this.superBase = this;
@@ -244,7 +242,7 @@ CircularLowFootprint.prototype.constructor = CircularLowFootprint;
  *
  *
  */
-function AsyncCircular(queueSize = 10, type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
+function AsyncCircular(type = "end" /* front | end | de */, method = "fifo" /* fifo | lifo */, size = 100) {
 
     Circular.call(this, type = type, method = method, size = size);
     this.superBase = this;

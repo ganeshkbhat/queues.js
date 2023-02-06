@@ -26,7 +26,8 @@ const {
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore, WaitQueue
+    // Circular, AsyncCircular, 
+    Semaphore, WaitQueue
 } = require("../index.js");
 
 const {
@@ -133,11 +134,11 @@ describe('test-.mjs::queues.js: Test Suite for queues.js demos.js Files', functi
         expect(!!AsyncPriorityLowFootprint).to.equal(true);
         expect(typeof AsyncPriorityLowFootprint).to.equal("function");
 
-        expect(!!Circular).to.equal(true);
-        expect(typeof Circular).to.equal("function");
+        // expect(!!Circular).to.equal(true);
+        // expect(typeof Circular).to.equal("function");
 
-        expect(!!AsyncCircular).to.equal(true);
-        expect(typeof AsyncCircular).to.equal("function");
+        // expect(!!AsyncCircular).to.equal(true);
+        // expect(typeof AsyncCircular).to.equal("function");
 
         expect(!!Semaphore).to.equal(true);
         expect(typeof Semaphore).to.equal("function");

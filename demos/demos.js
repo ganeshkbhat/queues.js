@@ -24,7 +24,8 @@ const {
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore, WaitQueue } = require("../index.js");
+    // Circular, AsyncCircular, 
+    Semaphore, WaitQueue } = require("../index.js");
 
 console.log(
     Queue, QueueLowFootprint, QueueLifo, QueueFifo, QueueLowFootprintLifo, QueueLowFootprintFifo,
@@ -35,4 +36,5 @@ console.log(
     AsyncStack, AsyncStackLowFootprint,
     DoubleEnded, DoubleEndedLowFootprint, AsyncDoubleEnded, AsyncDoubleEndedLowFootprint,
     Priority, PriorityLowFootprint, AsyncPriority, AsyncPriorityLowFootprint,
-    Circular, AsyncCircular, Semaphore, WaitQueue)
+    // Circular, AsyncCircular, 
+    Semaphore, WaitQueue)
