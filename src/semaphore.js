@@ -18,84 +18,130 @@
 const { Base, BaseLowFootprint, AsyncBase, AsyncBaseLowFootPrint } = require("./base.js");
 
 
-/**
- *
- *
- * @param {*} initialValue
- */
-function SemaphoreQueue(initialValue) {
+// /**
+//  *
+//  *
+//  * @param {*} initialValue
+//  */
+// function SemaphoreQueue(initialValue) {
+
+//   Base.call(this);
+//   this.superBase = this;
+
+//   this.count = initialValue;
+//   this.lock = false;
+
+//   /**
+//    * Decrement the semaphore
+//    */
+//   async function P() { }
+
+//   /**
+//    * Increment the semaphore
+//    */
+//   async function V() { }
+
+//   async function use() { }
+
+//   function value() {
+//     return this.count;
+//   }
+
+
+// }
+
+
+// /**
+//  *
+//  *
+//  * @param {*} initialValue
+//  */
+// function Semaphore(initialValue) {
+//   this.count;
+//   this.awaiters = new Queue();
+//   this.count = initialValue;
+
+//   /**
+//    * Decrement the semaphore
+//    */
+//   async function P() {
+//     this.count--;
+//     if (this.count < 0) {
+//       // accept should be a function
+//       await new Promise((accept) => {
+//         this.awaiters.enqueue(accept);
+//       });
+//     }
+//   }
+
+//   /**
+//    * Increment the semaphore
+//    */
+//   function V() {
+//     this.count++;
+//     if (this.count <= 0) {
+//       setImmediate(this.awaiters.dequeue());
+//     }
+//   }
+
+//   async function use(thunk) {
+//     try {
+//       await this.P();
+//       await thunk();
+//     } finally {
+//       this.V();
+//     }
+//   }
+
+//   function value() {
+//     return this.count;
+//   }
+// }
+
+function Semaphore(initialValue) {
 
   Base.call(this);
   this.superBase = this;
 
-  this.count = initialValue;
-  this.lock = false;
+  // this.awaiters = new Queue();
+  this.maxCount = initialValue;
+  this.count = 0;
+  this.waiting = [];
 
-  /**
-   * Decrement the semaphore
-   */
-  async function P() { }
-
-  /**
-   * Increment the semaphore
-   */
-  async function V() { }
-
-  async function use() { }
-
-  function value() {
-    return this.count;
-  }
-
-
-}
-
-
-/**
- *
- *
- * @param {*} initialValue
- */
-function Semaphore(initialValue) {
-  this.count;
-  this.awaiters = new Queue();
-  this.count = initialValue;
-
-  /**
-   * Decrement the semaphore
-   */
-  async function P() {
-    this.count--;
-    if (this.count < 0) {
-      // accept should be a function
-      await new Promise((accept) => {
-        this.awaiters.enqueue(accept);
-      });
+  async function acquire(item) {
+    if (this.count < this.maxCount) {
+      this.count++;
+      return;
     }
-  }
 
-  /**
-   * Increment the semaphore
-   */
-  function V() {
+    await new Promise((resolve) => {
+      this.waiting.push(resolve);
+    });
     this.count++;
-    if (this.count <= 0) {
-      setImmediate(this.awaiters.dequeue());
+    this.items.push(item);
+  }
+
+  function release(args) {
+    if (this.count === 0) {
+      throw new Error('Semaphore underflow');
+    }
+    this.count--;
+    if (this.waiting.length > 0) {
+      const resolve = this.waiting.shift();
+      let fnc = this.items[this.count];
+      resolve(fnc(args));
     }
   }
 
-  async function use(thunk) {
-    try {
-      await this.P();
-      await thunk();
-    } finally {
-      this.V();
-    }
+  async function run(taskName, args) {
+    console.log(`${taskName} is waiting for a permit`);
+    await acquire();
+    console.log(`${taskName} has acquired a permit`);
+    // Run some code here
+    console.log(`${taskName} is releasing the permit`);
+    release(args);
   }
 
-  function value() {
-    return this.count;
-  }
 }
 
 SemaphoreQueue.prototype = Object.create(SemaphoreQueue.prototype);
